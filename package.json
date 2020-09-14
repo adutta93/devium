@@ -22,7 +22,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.5",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "uuid": "^8.3.0"
   },
   "bugs": {
     "url": "https://github.com/akash-dutta-au7/note-app/issues"

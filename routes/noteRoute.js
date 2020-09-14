@@ -1,14 +1,9 @@
 const router = require("express").Router();
-const {protect, authorize} = require('../middleware/auth')
+const { protect, authorize } = require("../middleware/auth");
+const { getAllNotes, createPost } = require("../controller/noteController");
 
-router
-  .route("/")
-  .get(protect, (req, res) => {
-    res.status(200).json({
-      msg: "Get all posts",
-    });
-  })
-  .post();
+router.route("/").get(protect, getAllNotes)
+router.route('/create-post').post(protect, createPost);
 
 router.route("/:id").get().put().delete();
 module.exports = router;
