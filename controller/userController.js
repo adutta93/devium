@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 exports.registration = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, passwordCheck } = req.body;
     const user = await User.findOne({ email: email });
     if (user) {
       return res.status(400).json({
@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
 
     //if everything matches
     const payload = { id: user._id, email: user.email };
-    const token = jwt.sign(payload, process.env.TOkEN_SECRET, {
+    const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
       expiresIn: "5h",
     });
 
@@ -70,6 +70,14 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.deleteUser = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ msg: "User deleted" });
+  } catch (error) {
+    return res.status(500).json({ err: err.message });
+  }
+};
 exports.verifiedToken = (req, res) => {
   try {
     // Verify token

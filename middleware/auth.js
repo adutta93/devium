@@ -6,15 +6,19 @@ exports.protect = async (req, res, next) => {
   try {
     const token = req.header("Authorization");
     if (!token) {
-      return res.status(400).json({ Err: "Not authorize to access" });
+      return res
+        .status(401)
+        .json({ Err: "Not token given, unable to authorize" });
     }
-    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-      if (err) {
-        return res.status(400).json("Authentication no valid");
-      }
-      req.user = user;
-      next();
-    });
+    const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+    if (!verified) {
+      return res.status(401).json({
+        err: "Token verification failed, access denied!",
+      });
+    }
+    req.user = verified.id;
+    console.log(verified);
+    next();
   } catch (error) {
     return res.status(500).json({ err: err.message });
   }

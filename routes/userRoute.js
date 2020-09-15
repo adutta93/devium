@@ -1,9 +1,12 @@
 const router = require("express").Router();
-const { registration, login, verifiedToken } = require("../controller/userController");
+const {protect}  = require('../middleware/auth')
+const { registration, login, verifiedToken, deleteUser } = require("../controller/userController");
 
 router.post("/register", registration);
 
 router.post("/login", login);
 
-router.get('/verify', verifiedToken)
+router.post('/verify', verifiedToken)
+
+router.delete('/delete-user/:id', protect, deleteUser)
 module.exports = router;
