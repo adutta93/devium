@@ -13,6 +13,9 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 20;
+  @media screen and (max-width: 760px) {
+    margin-bottom: -5rem; 
+  }
 `;
 
 export const NavbarContainer = styled(Container)`
@@ -112,8 +115,7 @@ export const NavLinks = styled(Link)`
     text-align: center;
     padding: 2rem;
     width: 100%;
-    display: table;
-    
+    display: table; 
   }
   &:hover {
     border-bottom: 4px solid #03a87c;
