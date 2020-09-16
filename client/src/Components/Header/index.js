@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Button from "../Button";
 import {
   Nav,
   NavbarContainer,
@@ -26,15 +27,23 @@ const Header = () => {
         <HamburgerMenu onClick={menuToggle}>
           {click ? <FaTimes /> : <FaBars />}
         </HamburgerMenu>
-        <NavMenu>
+        <NavMenu onClick={menuToggle} click={click}>
           <NavItem>
-            <NavLinks to="/">
-              <p>Home</p>
-            </NavLinks>
+            <NavLinks to="/">Home</NavLinks>
+          </NavItem>
 
+          <NavItem>
             <NavLinks to="/blog">Blog</NavLinks>
+          </NavItem>
 
-            <NavLinks to="/login">Sign In</NavLinks>
+          <NavItem>
+            <NavLinks to="/signin">Sign In</NavLinks>
+          </NavItem>
+
+          <NavItem>
+            <NavLinks to="/register">
+              <Button value="Get Started" />
+            </NavLinks>
           </NavItem>
         </NavMenu>
       </NavbarContainer>

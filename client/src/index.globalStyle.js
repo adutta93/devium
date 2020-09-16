@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Source Sanf Pro', sans-serif;
   }
+  a{
+    list-style: none;
+    color: black;
+  }
 `;
 
 export const Container = styled.div`
