@@ -1,11 +1,25 @@
 import styled from "styled-components";
 
 export const Btn = styled.button`
-  background: #03a87c;
-  color: #fff;
-  padding: ${({ bigBtn, mediumBtn }) =>
-    bigBtn ? "1.2rem 6rem" : mediumBtn ? "1rem 3rem" : "0.7rem 2.5rem "};
-  border: none;
+  background: ${({ bigBtn, mediumBtn, transparent }) =>
+    bigBtn
+      ? "#03a87c"
+      : mediumBtn
+      ? "#03a87c"
+      : transparent
+      ? "#fff"
+      : "#03a87c "};
+  color: ${({ bigBtn, mediumBtn, transparent }) =>
+    bigBtn ? "#fff" : mediumBtn ? "#fff" : transparent ? "#03a87c" : "#fff "};
+  padding: ${({ bigBtn, mediumBtn, transparent }) =>
+    bigBtn
+      ? "1.2rem 6rem"
+      : mediumBtn
+      ? "1rem 3rem"
+      : transparent
+      ? "0.6rem 2.3rem "
+      : "0.7rem 2.5rem "};
+  border: ${({ transparent }) => (transparent ? "2px solid #03a87c" : "none ")};
   outline: none;
   border-radius: 5px;
   font-size: 0.9rem;
@@ -13,7 +27,10 @@ export const Btn = styled.button`
     bigBtn ? "1rem" : mediumBtn ? ".8rem" : " "};
   cursor: pointer;
   &:hover {
+    border: 2px solid white;
+    color: #fff;
     background: #00c792;
     transition: all 0.3s ease-out;
   }
 `;
+// transparent

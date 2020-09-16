@@ -41,6 +41,12 @@ const Header = () => {
           </NavItem>
 
           <NavItem>
+            <NavLinks to="/premium">
+              <Button value="Premium" transparent/>
+            </NavLinks>
+          </NavItem>
+
+          <NavItem>
             <NavLinks to="/register">
               <Button value="Get Started" />
             </NavLinks>

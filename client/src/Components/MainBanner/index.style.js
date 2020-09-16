@@ -54,6 +54,7 @@ export const SignInAccount = styled.h5`
   font-size: 1.1rem;
   font-weight: 100;
   span {
+    text-decoration: none !important;
     font-family: Serif;
     color: #03a87c;
   }

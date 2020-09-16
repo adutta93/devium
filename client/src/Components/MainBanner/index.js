@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import svgOne from '../../Assets/svg-1.svg'
+
 import { Link } from "react-router-dom";
 import {
   Banner,
@@ -11,10 +11,18 @@ import {
   BottomLine,
   SignInAccount,
   ImgWrapper,
-  Img
+  Img,
 } from "./index.style";
 import { Container } from "../../index.globalStyle";
-const MainBanner = ({ lightBg, imgStart}) => {
+const MainBanner = ({
+  lightBg,
+  imgStart,
+  headline,
+  bottomline,
+  signaccount,
+  span,
+  img,
+}) => {
   return (
     <div>
       <Banner lightBg={lightBg}>
@@ -22,23 +30,22 @@ const MainBanner = ({ lightBg, imgStart}) => {
           <BannerRow imgStart={imgStart}>
             <BannerColumn>
               <TextWrapper>
-                <Heading>Dive deeper on topics that matter to you.</Heading>
-                <BottomLine>
-                  Select what you're into. We'll help you find great things to
-                  read. Getting your hands into modern technology is now just
-                  once click away from you.
-                </BottomLine>
+                <Heading>{headline}</Heading>
+                <BottomLine>{bottomline}</BottomLine>
                 <Link to="/register">
                   <Button value="Get Started" bigBtn />
                 </Link>
                 <SignInAccount>
-                  Already have an account ? <span>Sign in</span>
+                  {signaccount}
+                  <Link to="/signin">
+                    <span>{span}</span>
+                  </Link>
                 </SignInAccount>
               </TextWrapper>
             </BannerColumn>
             <BannerColumn>
               <ImgWrapper>
-                <Img src={svgOne} />
+                <Img src={img} alt="image" />
               </ImgWrapper>
             </BannerColumn>
           </BannerRow>

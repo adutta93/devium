@@ -4,7 +4,7 @@ import { FaMagento } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
-  /* background: #101522; */
+  background: #fff;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -118,7 +118,7 @@ export const NavLinks = styled(Link)`
     display: table; 
   }
   &:hover {
-    border-bottom: 4px solid #03a87c;
+    /* border-bottom: 4px solid #03a87c; */
     color: #03a87c;
     transition: all 0.3s ease;
   }
