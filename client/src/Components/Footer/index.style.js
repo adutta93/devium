@@ -23,8 +23,9 @@ export const FooterSubscription = styled.div`
 `;
 
 export const FooterSubHeading = styled.p`
+  font-family: serif;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 `;
 
 export const FooterSubText = styled.p`

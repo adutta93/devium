@@ -9,7 +9,6 @@ const Home = () => {
       <MainBanner {...homeObjOne} />
       <MainBanner {...homeObjTwo} />
       <SecondBanner />
-      <Footer />
     </div>
   );
 };
