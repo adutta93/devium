@@ -1,11 +1,26 @@
 import React from "react";
 import { Btn } from "./index.style";
 
-const Button = ({ value, isBigBtn, isTransparent, ...otherProps }) => {
+const Button = ({
+  value,
+  isBigBtn,
+  isTransparent,
+  isLarge,
+  isSmall,
+  ...otherProps
+}) => {
   return (
     <Btn
       className={`${
-        isBigBtn ? "big-btn" : isTransparent ? "transparent" : " "
+        isBigBtn
+          ? "big-btn"
+          : isLarge
+          ? "largeMargin"
+          : isSmall
+          ? "smallMargin"
+          : isTransparent
+          ? "transparent"
+          : " "
       } btn`}
       {...otherProps}
     >

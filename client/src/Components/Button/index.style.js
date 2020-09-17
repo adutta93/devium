@@ -24,13 +24,23 @@ export const Btn = styled.button`
   border-radius: 5px;
   font-size: 0.9rem;
   margin-top: ${({ bigBtn, mediumBtn }) =>
-    bigBtn ? "1rem" : mediumBtn ? ".8rem" : " "};
+    bigBtn ? "2rem" : mediumBtn ? ".8rem" : " "};
+  margin-left: ${({ smallMargin, largeMargin }) =>
+    smallMargin ? ".1rem" : largeMargin ? "5rem" : ""};
   cursor: pointer;
   &:hover {
     border: 2px solid white;
     color: #fff;
     background: #00c792;
     transition: all 0.3s ease-out;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-left: -.1rem;
+    /* max-width: 100%;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center; */
   }
 `;
 // transparent

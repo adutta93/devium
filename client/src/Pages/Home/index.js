@@ -1,5 +1,6 @@
 import React from "react";
-import { MainBanner } from "../../Components";
+import { MainBanner, SecondBanner } from "../../Components";
+
 import {homeObjOne, homeObjTwo} from './Data'
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <div>
       <MainBanner {...homeObjOne}/>
       <MainBanner {...homeObjTwo}/>
+      <SecondBanner />
     </div>
   );
 };

@@ -2,8 +2,13 @@ import styled from "styled-components";
 
 export const Banner = styled.div`
   color: #000;
-  padding: 10rem 0;
+  /* padding: 5rem 0; */
+  margin-top: 6rem;
   background: ${({ lightBg }) => (lightBg ? "#101522" : "#fff")};
+  @media screen and (max-width: 768px) {
+    margin-top: 7rem;
+    margin-bottom: -5rem;
+  }
 `;
 
 export const BannerRow = styled.div`
