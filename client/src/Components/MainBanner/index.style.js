@@ -63,6 +63,9 @@ export const SignInAccount = styled.h5`
     font-family: Serif;
     color: #03a87c;
   }
+  @media screen and (max-width: 768px) {
+    margin-left: 5.5rem;
+  }
 `;
 
 export const ImgWrapper = styled.div`

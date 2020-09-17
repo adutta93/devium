@@ -48,7 +48,7 @@ const Header = () => {
 
           <NavItem>
             <NavLinks to="/register">
-              <Button value="Get Started" />
+              <Button value="Register" />
             </NavLinks>
           </NavItem>
         </NavMenu>

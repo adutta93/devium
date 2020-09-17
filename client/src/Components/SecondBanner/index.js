@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 import {
   Banner,
   BannerRow,
@@ -19,7 +20,9 @@ const SecondBanner = () => {
               <TextWrapper>
                 <HeadingOne>Expand your reading.</HeadingOne>
                 <HeadingTwo>Expand your mind.</HeadingTwo>
-                <Button value="Get Started" bigBtn largeMargin/>
+                <Link to="/register">
+                  <Button value="Get Started" bigBtn largeMargin />
+                </Link>
               </TextWrapper>
             </BannerColumn>
           </BannerRow>

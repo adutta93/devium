@@ -36,10 +36,10 @@ export const Btn = styled.button`
   }
 
   @media screen and (max-width: 768px) {
-    margin-left: -.1rem;
-    /* max-width: 100%;
-    flex-basis: 100%;
-    display: flex;
+    margin-left: -0.1rem;
+    width: 100%;
+    /* flex-basis: 100%; */
+    /* display: flex;
     justify-content: center; */
   }
 `;
