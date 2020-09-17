@@ -20,7 +20,7 @@ import {
   SocialIcon,
   SocialIconLink,
   WebsiteRights,
-  SocialIcons
+  SocialIcons,
 } from "./index.style";
 const Footer = () => {
   return (
@@ -46,7 +46,8 @@ const Footer = () => {
             <FooterLink>Subscribe</FooterLink>
             <FooterLink>Carrers</FooterLink>
           </FooterLinkItems>
-
+        </FooterLinksWrapper>
+        <FooterLinksWrapper>
           <FooterLinkItems>
             <FooterLink to="/signin">Sign In</FooterLink>
             <FooterLink>Investors</FooterLink>
