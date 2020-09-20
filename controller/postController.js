@@ -1,10 +1,10 @@
 const Notes = require("../models/noteModel");
 
-exports.getAllNotes = async (req, res) => {
+exports.getAllPosts = async (req, res) => {
   try {
     // res.json({ user_id: req.user.id });
     const notes = await Notes.find();
-    console.log(notes)
+    console.log(notes);
     res.status(200).json({
       results: notes.length,
       notes,
@@ -16,11 +16,10 @@ exports.getAllNotes = async (req, res) => {
   }
 };
 
-exports.getOneSingleNote = async(req, res) => {
+exports.getOneSinglePost = async (req, res) => {
   try {
-    
-    const notes = await Notes.findById(req.params.id)
-    console.log(notes)
+    const notes = await Notes.findById(req.params.id);
+    console.log(notes);
     res.status(200).json({
       results: notes.length,
       notes,
@@ -30,8 +29,8 @@ exports.getOneSingleNote = async(req, res) => {
       error: error.message,
     });
   }
-}
-exports.createNote = async (req, res) => {
+};
+exports.createPost = async (req, res) => {
   try {
     const { title, content, date, user_id, name } = req.body;
 
@@ -40,7 +39,7 @@ exports.createNote = async (req, res) => {
       content,
       date,
       user_id,
-      name
+      name,
     });
 
     res.status(200).json({
@@ -50,41 +49,41 @@ exports.createNote = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "Error",
-      error: error.message
+      error: error.message,
     });
   }
 };
 
-exports.updateNote = async (req, res) => {
+exports.updatePost = async (req, res) => {
   try {
     const note = await Notes.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
 
     res.status(200).json({
-      status: 'success',
+      status: "success",
       data: {
         note,
       },
     });
   } catch (err) {
     res.status(500).json({
-      status: 'Error',
-      error: error.message
+      status: "Error",
+      error: error.message,
     });
   }
 };
 
-exports.deleteNote = async (req, res) => {
+exports.deletePost = async (req, res) => {
   try {
     await Notes.findByIdAndDelete(req.params.id);
     res.json({
-      msg: 'Successfully deleted Note',
+      msg: "Successfully deleted Note",
       // data: null,
     });
   } catch (err) {
     res.status(500).json({
-      status: 'Error',
+      status: "Error",
       error: error.message,
     });
   }

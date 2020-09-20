@@ -1,0 +1,3 @@
+{
+  "DATABASE_URI": "mongodb+srv://akashdutta93:qmCBSVRMFyX5T25E@cluster0.spyim.mongodb.net/note-app?retryWrites=true&w=majority"
+}
