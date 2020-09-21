@@ -20,23 +20,24 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
       unique: true,
-      loadClass: true,
-      // // validate: [validator.isEmail, 'Please provode a valid email'],
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Please add a valid email",
-      ],
     },
     password: {
       type: String,
-      required: [true, "Please add a password"],
-      minlength: 8,
+      required: true,
+      // minlength: 8,
       // select: false,
+    },
+    avatar: {
+      type: String,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
     },
     role: {
       type: String,
-      default: 'user',
-      enum: ['user', 'admin', 'accounts'],
+      default: "user",
+      enum: ["user", "admin", "accounts"],
     },
   },
   { timestamps: true }
