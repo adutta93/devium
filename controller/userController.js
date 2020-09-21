@@ -43,7 +43,7 @@ exports.registration = async (req, res) => {
     jwt.sign(
       payload,
       process.env.TOKEN_SECRET,
-      { expiresIn: 18000 },
+      { expiresIn: "5h" },
       (err, token) => {
         if (err) {
           throw err;
@@ -55,46 +55,6 @@ exports.registration = async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error");
-  }
-};
-
-exports.login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    //validation email and password
-    if (!email || !password) {
-      return res.status(400).json({
-        Err: "Please enter mail id or password",
-      });
-    }
-
-    //check for user
-    const user = await User.findOne({ email }).select("+password");
-    if (!user) {
-      return res.status(401).json({
-        err: "User dose not exists",
-      });
-    }
-
-    //check for password
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({
-        err: "Invalid Password",
-      });
-    }
-
-    //if everything matches
-    const payload = { id: user._id, email: user.email };
-    const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
-      expiresIn: "5h",
-    });
-
-    res.status(200).json({ token });
-  } catch (error) {
-    res.status(500).json({
-      Error: "Unable to log in!",
-    });
   }
 };
 
