@@ -1,15 +1,12 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+// const validator = require("validator");
+const crypto = require("crypto");
+require("dotenv").config();
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
-      maxlength: 32,
-    },
-
-    lastName: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -33,11 +30,6 @@ const userSchema = new mongoose.Schema(
     date: {
       type: Date,
       default: Date.now,
-    },
-    role: {
-      type: String,
-      default: "user",
-      enum: ["user", "admin", "accounts"],
     },
   },
   { timestamps: true }

@@ -1,8 +1,10 @@
 const { check, validationResult } = require("express-validator");
+const crypto = require("crypto");
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const gravatar = require("gravatar");
+require("dotenv").config();
 
 exports.registration = async (req, res) => {
   const errors = validationResult(req);
@@ -12,11 +14,11 @@ exports.registration = async (req, res) => {
     });
   }
 
-  const { firstName, lastName, email, password, passwordCheck } = req.body;
+  const { name, email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email });
     if (user) {
-      res.status(400).json({ errors: [{ msg: "User already exists" }] });
+      return res.status(400).json({ errors: [{ msg: "User already exists" }] });
     }
 
     const avatar = gravatar.url(email, {
@@ -25,18 +27,20 @@ exports.registration = async (req, res) => {
       d: "mm",
     });
 
-    const passwordHash = await bcrypt.hash(password, 12);
-    const newUser = await new User({
-      firstName,
-      lastName,
+    user = new User({
+      name,
       email,
       avatar,
-      password: passwordHash,
-    }).save();
+      password,
+    });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+    await user.save();
 
     const payload = {
       user: {
-        id: newUser.id,
+        id: user.id,
       },
     };
 
@@ -51,7 +55,6 @@ exports.registration = async (req, res) => {
         res.status(200).json({ token });
       }
     );
-    // res.status(200).json({ newUser });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error");
@@ -66,26 +69,3 @@ exports.deleteUser = async (req, res) => {
     return res.status(500).json({ err: err.message });
   }
 };
-
-// exports.verifiedToken = (req, res) => {
-//   try {
-//     // Verify token
-//     const token = req.header("Authorization");
-//     if (!token) {
-//       return res.send("Token not found");
-//     }
-//     jwt.verify(token, process.env.TOKEN_SECRET, async (err, verified) => {
-//       if (err) {
-//         return res.send("Invalid Token");
-//       }
-//       const user = await User.findById(verified.id);
-//       console.log(user);
-//       if (!user) {
-//         return res.send("User not found");
-//       }
-//       return res.send("Verified");
-//     });
-//   } catch (err) {
-//     return res.status(500).json({ err: err.message });
-//   }
-// };
