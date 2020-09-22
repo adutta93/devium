@@ -60,12 +60,3 @@ exports.registration = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
-
-exports.deleteUser = async (req, res) => {
-  try {
-    await User.findByIdAndDelete(req.params.id);
-    res.json({ msg: "User deleted" });
-  } catch (error) {
-    return res.status(500).json({ err: err.message });
-  }
-};

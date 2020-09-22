@@ -1,4 +1,5 @@
 const Profile = require("../models/profileModel");
+const User = require("../models/userModel");
 const { validationResult } = require("express-validator");
 
 //GET CURRENT USER PROFILE
@@ -102,13 +103,26 @@ exports.getProfileById = async (req, res) => {
     }).populate("user", ["name", "avatar"]);
 
     if (!profile) {
-      return res.json({ msg: "No profile found with this user" });
+      return res.json({ msg: "Profile not found" });
     }
     res.json({
       profile,
     });
   } catch (error) {
     console.error(error.message);
+    if (error.kind == "ObjectId") return res.json({ msg: "Profile not found" });
     res.json({ msg: "Server error" });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    //remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+    //remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+    res.json({ msg: "User deleted" });
+  } catch (error) {
+    return res.status(500).json({ err: err.message });
   }
 };

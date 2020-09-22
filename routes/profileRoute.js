@@ -7,6 +7,7 @@ const {
   manageUserProfile,
   getAllProfiles,
   getProfileById,
+  deleteUser,
 } = require("../controller/profileController");
 
 //@route   GET  api/profile/me
@@ -40,4 +41,8 @@ router.get("/", protect, getAllProfiles);
 
 router.get("/user/:user_id", protect, getProfileById);
 
+//@route   GET api/profile/user/:user_id
+//@desc    Delete profile
+//@access  Protect
+router.delete("/user/", protect, deleteUser);
 module.exports = router;
