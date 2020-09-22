@@ -81,3 +81,34 @@ exports.manageUserProfile = async (req, res) => {
     res.json({ msg: "Server error" });
   }
 };
+
+exports.getAllProfiles = async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    res.json({
+      length: profiles.length,
+      profiles,
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.json({ msg: "Server error" });
+  }
+};
+
+exports.getProfileById = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate("user", ["name", "avatar"]);
+
+    if (!profile) {
+      return res.json({ msg: "No profile found with this user" });
+    }
+    res.json({
+      profile,
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.json({ msg: "Server error" });
+  }
+};

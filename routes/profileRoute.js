@@ -5,6 +5,8 @@ const { protect } = require("../middleware/auth");
 const {
   getCurrentUserProfile,
   manageUserProfile,
+  getAllProfiles,
+  getProfileById,
 } = require("../controller/profileController");
 
 //@route   GET  api/profile/me
@@ -25,4 +27,17 @@ router.post(
   ],
   manageUserProfile
 );
+
+//@route   GET api/profile/
+//@desc    Get all profile
+//@access  Protect
+
+router.get("/", protect, getAllProfiles);
+
+//@route   GET api/profile/user/:user_id
+//@desc    Get profile by id
+//@access  Protect
+
+router.get("/user/:user_id", protect, getProfileById);
+
 module.exports = router;
