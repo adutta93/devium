@@ -12,6 +12,7 @@ const {
   addEducation,
   deleteEducation,
   deleteUser,
+  getGitHubRepo,
 } = require("../controller/profileController");
 
 //@route   GET  api/profile/me
@@ -88,4 +89,9 @@ router.delete("/user/education/:edu_id", protect, deleteEducation);
 //@desc    Delete profile
 //@access  Protect
 router.delete("/user/", protect, deleteUser);
+
+//@route   GET api/profile/github/:githubusername
+//@desc    Get github repo
+//@access  Protect
+// router.get("/github/:username", protect, getGitHubRepo);
 module.exports = router;

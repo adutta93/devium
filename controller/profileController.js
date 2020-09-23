@@ -1,5 +1,7 @@
 const Profile = require("../models/profileModel");
 const User = require("../models/userModel");
+const axios = require("axios");
+require("dotenv").config();
 const { validationResult } = require("express-validator");
 
 //GET CURRENT USER PROFILE
@@ -231,5 +233,24 @@ exports.deleteUser = async (req, res) => {
     res.json({ msg: "User deleted" });
   } catch (error) {
     return res.status(500).json({ err: err.message });
+  }
+};
+
+//FETCHING GITHUB REPO
+exports.getGitHubRepo = async (req, res) => {
+  try {
+    const uri = encodeURI(
+      `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+    );
+    const headers = {
+      "user-agent": "node.js",
+      Authorization: `token ${process.env.GITHUB_CLIENT_SECRET}`,
+    };
+    const gitHubResponse = await axios.get(uri, { headers });
+    console.log("Response", gitHubResponse);
+    res.json(gitHubResponse.data);
+  } catch (error) {
+    console.error(error.message);
+    res.json({ msg: "Server error" });
   }
 };
