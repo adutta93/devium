@@ -6,6 +6,7 @@ const {
   getAllPosts,
   getOneSinglePost,
   deletePost,
+  updatePost,
 } = require("../controller/postController");
 const { protect } = require("../middleware/auth");
 
@@ -28,6 +29,11 @@ router.get("/", protect, getAllPosts);
 //@desc    Get all post
 //@access  Protect
 router.get("/:id", protect, getOneSinglePost);
+
+//@route   UPDATE api/post/:id
+//@desc    update a post
+//@access  Protect
+router.put("/:id", protect, updatePost);
 
 //@route   DELETE api/post/:id
 //@desc    Delete a post

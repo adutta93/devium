@@ -80,13 +80,13 @@ exports.updatePost = async (req, res) => {
         .status(401)
         .json({ msg: "User not authorized to edit this post" });
     }
-    await post.remove(req.body, {
+    await post.update(req.body, {
       new: true,
     });
     res.json({
       msg: "Post successfully updated",
     });
-  } catch (err) {
+  } catch (error) {
     console.error(error);
     if (error.kind === "ObjectId")
       return res.status(404).json({ msg: "Post Not Found" });
