@@ -20,6 +20,7 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
+//GET A SINGLE POST
 exports.getOneSinglePost = async (req, res) => {
   try {
     const post = await Posts.findById(req.params.id);
@@ -67,19 +68,28 @@ exports.createPost = async (req, res) => {
   }
 };
 
+//UPDATE POST
 exports.updatePost = async (req, res) => {
   try {
-    const note = await Notes.findByIdAndUpdate(req.params.id, req.body, {
+    const post = await Posts.findById(req.params.id);
+
+    if (!post) return res.status(404).json({ msg: "Post Not Found" });
+    //check user authorization to delete post
+    if (post.user.toString() !== req.user.id) {
+      return res
+        .status(401)
+        .json({ msg: "User not authorized to edit this post" });
+    }
+    await post.remove(req.body, {
       new: true,
     });
-
-    res.status(200).json({
-      status: "success",
-      data: {
-        note,
-      },
+    res.json({
+      msg: "Post successfully updated",
     });
   } catch (err) {
+    console.error(error);
+    if (error.kind === "ObjectId")
+      return res.status(404).json({ msg: "Post Not Found" });
     res.status(500).json({
       status: "Error",
       error: error.message,
@@ -89,12 +99,23 @@ exports.updatePost = async (req, res) => {
 
 exports.deletePost = async (req, res) => {
   try {
-    await Notes.findByIdAndDelete(req.params.id);
+    const post = await Posts.findById(req.params.id);
+
+    if (!post) return res.status(404).json({ msg: "Post Not Found" });
+    //check user authorization to delete post
+    if (post.user.toString() !== req.user.id) {
+      return res
+        .status(401)
+        .json({ msg: "User not authorized to delete this post" });
+    }
+    await post.remove();
     res.json({
-      msg: "Successfully deleted Note",
-      // data: null,
+      msg: "Post successfully deleted ",
     });
   } catch (err) {
+    console.error(error);
+    if (error.kind === "ObjectId")
+      return res.status(404).json({ msg: "Post Not Found" });
     res.status(500).json({
       status: "Error",
       error: error.message,
