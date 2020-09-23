@@ -30,6 +30,9 @@ exports.getOneSinglePost = async (req, res) => {
       post,
     });
   } catch (error) {
+    console.error(error);
+    if (error.kind === "ObjectId")
+      return res.status(404).json({ msg: "Post Not Found" });
     return res.status(500).json({
       error: "Server error",
     });
