@@ -1,4 +1,8 @@
-const Notes = require("../models/noteModel");
+const Posts = require("../models/postModel");
+const Profile = require("../models/profileModel");
+const User = require("../models/userModel");
+
+const { validationResult } = require("express-validator");
 
 exports.getAllPosts = async (req, res) => {
   try {
@@ -30,26 +34,31 @@ exports.getOneSinglePost = async (req, res) => {
     });
   }
 };
+
+//CREATE POST
 exports.createPost = async (req, res) => {
-  try {
-    const { title, content, date, user_id, name } = req.body;
-
-    const newNote = await Notes.create({
-      title,
-      content,
-      date,
-      user_id,
-      name,
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      errors: errors.array(),
     });
-
+  }
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    const newPost = new Posts({
+      text: req.body.text,
+      name: user.name,
+      avatar: user.avatar,
+      user: req.user.id,
+    });
+    const post = await newPost.save();
     res.status(200).json({
-      msg: "Note successfully created",
-      newNote,
+      msg: "Post successfully created",
+      post,
     });
   } catch (error) {
     res.status(500).json({
-      status: "Error",
-      error: error.message,
+      msg: "Server error",
     });
   }
 };
