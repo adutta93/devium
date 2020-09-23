@@ -7,6 +7,10 @@ const {
   manageUserProfile,
   getAllProfiles,
   getProfileById,
+  addExperience,
+  deleteExperience,
+  addEducation,
+  deleteEducation,
   deleteUser,
 } = require("../controller/profileController");
 
@@ -41,7 +45,46 @@ router.get("/", protect, getAllProfiles);
 
 router.get("/user/:user_id", protect, getProfileById);
 
-//@route   GET api/profile/user/:user_id
+//@route   PUT api/profile/user/experience
+//@desc    Add experience to profile
+//@access  Protect
+router.put(
+  "/user/experience",
+  protect,
+  [
+    check("title", "Title is required!").not().isEmpty(),
+    check("company", "Please enter your company name!").not().isEmpty(),
+    check("from", "From date is required!").not().isEmpty(),
+  ],
+  addExperience
+);
+
+//@route   DELETE api/profile/user/experience/:exp_id
+//@desc    Delete profile experience
+//@access  Protect
+router.delete("/user/experience/:exp_id", protect, deleteExperience);
+
+//@route   PUT api/profile/user/education
+//@desc    Add education to profile
+//@access  Protect
+router.put(
+  "/user/education",
+  protect,
+  [
+    check("school", "School is needed").not().isEmpty(),
+    check("degree", "Degree is needed").not().isEmpty(),
+    check("fieldofstudy", "Field of study is required!").not().isEmpty(),
+    check("from", "From date is required!").not().isEmpty(),
+  ],
+  addEducation
+);
+
+//@route   DELETE api/profile/user/education/:edu_id
+//@desc    Delete profile education
+//@access  Protect
+router.delete("/user/education/:edu_id", protect, deleteEducation);
+
+//@route   DELETE api/profile/user/:user_id
 //@desc    Delete profile
 //@access  Protect
 router.delete("/user/", protect, deleteUser);
