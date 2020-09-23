@@ -4,6 +4,7 @@ const User = require("../models/userModel");
 
 const { validationResult } = require("express-validator");
 
+//GET ALL POST
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Posts.find().sort({ date: -1 });
@@ -21,15 +22,16 @@ exports.getAllPosts = async (req, res) => {
 
 exports.getOneSinglePost = async (req, res) => {
   try {
-    const notes = await Notes.findById(req.params.id);
-    console.log(notes);
+    const post = await Posts.findById(req.params.id);
+
+    if (!post) return res.status(404).json({ msg: "Post Not Found" });
+    console.log(post);
     res.status(200).json({
-      results: notes.length,
-      notes,
+      post,
     });
   } catch (error) {
     return res.status(500).json({
-      error: error.message,
+      error: "Server error",
     });
   }
 };

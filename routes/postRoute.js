@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
-const { createPost, getAllPosts } = require("../controller/postController");
+const {
+  createPost,
+  getAllPosts,
+  getOneSinglePost,
+} = require("../controller/postController");
 const { protect } = require("../middleware/auth");
 
 //@route   POST api/post/create-post
@@ -18,4 +22,10 @@ router.post(
 //@desc    Get all post
 //@access  Protect
 router.get("/", protect, getAllPosts);
+
+//@route   GET api/post/
+//@desc    Get all post
+//@access  Protect
+router.get("/:id", protect, getOneSinglePost);
+
 module.exports = router;
