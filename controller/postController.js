@@ -6,16 +6,15 @@ const { validationResult } = require("express-validator");
 
 exports.getAllPosts = async (req, res) => {
   try {
-    // res.json({ user_id: req.user.id });
-    const notes = await Notes.find();
-    console.log(notes);
+    const posts = await Posts.find().sort({ date: -1 });
+    console.log(posts);
     res.status(200).json({
-      results: notes.length,
-      notes,
+      results: posts.length,
+      posts,
     });
   } catch (error) {
     return res.status(500).json({
-      error: error.message,
+      error: "Server error",
     });
   }
 };
