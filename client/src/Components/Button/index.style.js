@@ -11,11 +11,13 @@ export const Btn = styled.button`
       : "#03a87c "};
   color: ${({ bigBtn, mediumBtn, transparent }) =>
     bigBtn ? "#fff" : mediumBtn ? "#fff" : transparent ? "#03a87c" : "#fff "};
-  padding: ${({ bigBtn, mediumBtn, transparent }) =>
+  padding: ${({ bigBtn, mediumBtn, transparent, logInBtn }) =>
     bigBtn
       ? "1.2rem 6rem"
       : mediumBtn
       ? "1rem 3rem"
+      : logInBtn
+      ? "1.2rem 9rem"
       : transparent
       ? "0.6rem 2.3rem "
       : "0.7rem 2.5rem "};
@@ -23,8 +25,8 @@ export const Btn = styled.button`
   outline: none;
   border-radius: 5px;
   font-size: 0.9rem;
-  margin-top: ${({ bigBtn, mediumBtn }) =>
-    bigBtn ? "2rem" : mediumBtn ? ".8rem" : " "};
+  margin-top: ${({ bigBtn, mediumBtn, logInBtn }) =>
+    bigBtn ? "2rem" : logInBtn ? "2rem" : mediumBtn ? ".8rem" : " "};
   margin-left: ${({ smallMargin, largeMargin }) =>
     smallMargin ? ".1rem" : largeMargin ? "5rem" : ""};
   cursor: pointer;
@@ -39,8 +41,9 @@ export const Btn = styled.button`
     margin-left: -0.1rem;
     width: 100%;
     /* flex-basis: 100%; */
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
+    padding: 0.8rem 9rem;
   }
 `;
 // transparent
