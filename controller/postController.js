@@ -8,7 +8,7 @@ const { validationResult } = require("express-validator");
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Posts.find().sort({ date: -1 });
-    console.log(posts);
+    // console.log(posts);
     res.status(200).json({
       results: posts.length,
       posts,
@@ -26,7 +26,7 @@ exports.getOneSinglePost = async (req, res) => {
     const post = await Posts.findById(req.params.id);
 
     if (!post) return res.status(404).json({ msg: "Post Not Found" });
-    console.log(post);
+    // console.log(post);
     res.status(200).json({
       post,
     });
@@ -97,6 +97,7 @@ exports.updatePost = async (req, res) => {
   }
 };
 
+//DELETE POST
 exports.deletePost = async (req, res) => {
   try {
     const post = await Posts.findById(req.params.id);
@@ -120,5 +121,24 @@ exports.deletePost = async (req, res) => {
       status: "Error",
       error: error.message,
     });
+  }
+};
+
+//LIKE POST
+exports.likePost = async (req, res) => {
+  try {
+    const post = await Posts.findById(req.params.id);
+    if (
+      post.likes.filter((like) => like.user.toString() === req.user.id).length >
+      0
+    ) {
+      return res.status(400).json({ msg: "Post already liked" });
+    }
+    post.likes.unshift({ user: req.user.id });
+    await post.save();
+    res.json(post.likes);
+  } catch (error) {
+    console.error(error.message);
+    res.ststus(500).json({ msg: "Server error" });
   }
 };
