@@ -142,3 +142,28 @@ exports.likePost = async (req, res) => {
     res.ststus(500).json({ msg: "Server error" });
   }
 };
+
+//UNLIKE POST
+exports.unlikePost = async (req, res) => {
+  try {
+    const post = await Posts.findById(req.params.id);
+    if (
+      post.likes.filter((like) => like.user.toString() === req.user.id)
+        .length === 0
+    ) {
+      return res.status(400).json({ msg: "Post has not been liked" });
+    }
+
+    //get remove index
+    const removeLike = post.likes.map((like) =>
+      like.user.toString().indexOf(req.user.id)
+    );
+
+    post.likes.splice(removeLike, 1);
+    await post.save();
+    res.json(post.likes);
+  } catch (error) {
+    console.error(error.message);
+    res.ststus(500).json({ msg: "Server error" });
+  }
+};

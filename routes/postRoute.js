@@ -8,6 +8,7 @@ const {
   deletePost,
   updatePost,
   likePost,
+  unlikePost,
 } = require("../controller/postController");
 const { protect } = require("../middleware/auth");
 
@@ -46,4 +47,8 @@ router.delete("/:id", protect, deletePost);
 //@access  Protect
 router.put("/likes/:id", protect, likePost);
 
+//@route   PUT api/post/unlikes/:id
+//@desc    UnLike a post
+//@access  Protect
+router.put("/unlikes/:id", protect, unlikePost);
 module.exports = router;
