@@ -2,10 +2,12 @@
   "name": "note-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jss",
   "scripts": {
     "start": "nodemon app.js",
-    "client": "npm run start --prefix client"
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm start\" \"npm run client\"",
+    "start:prod": "NODE_ENV=production nodemon app.js"
   },
   "repository": {
     "type": "git",
