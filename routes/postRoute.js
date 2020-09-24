@@ -10,6 +10,7 @@ const {
   likePost,
   unlikePost,
   postComment,
+  deleteComment,
 } = require("../controller/postController");
 const { protect } = require("../middleware/auth");
 
@@ -62,4 +63,9 @@ router.post(
   [check("text", "Text is required").not().isEmpty()],
   postComment
 );
+
+//@route   DELETE api/post/comments/:id/:comment_id
+//@desc    Delete comment
+//@access  Protect
+router.delete("/comments/:id/:comment_id", protect, deleteComment);
 module.exports = router;

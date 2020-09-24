@@ -195,3 +195,36 @@ exports.postComment = async (req, res) => {
     });
   }
 };
+
+exports.deleteComment = async (req, res) => {
+  try {
+    const post = await Posts.findById(req.params.id);
+
+    // pull comment from post
+    const comment = post.comments.find(
+      (comment) => comment.id === req.params.comment_id
+    );
+
+    //make sure comment exists
+    if (!comment) {
+      return res.status(404).json({ msg: "Comment not found" });
+    }
+
+    //check user
+    if (comment.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "Not authorized to delete comment" });
+    }
+
+    //get remove index
+    const removeComment = post.comments.map((comment) =>
+      comment.user.toString().indexOf(req.user.id)
+    );
+
+    post.comments.splice(removeComment, 1);
+    await post.save();
+    res.json(post.comments);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error");
+  }
+};
