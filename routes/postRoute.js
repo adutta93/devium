@@ -9,6 +9,7 @@ const {
   updatePost,
   likePost,
   unlikePost,
+  postComment,
 } = require("../controller/postController");
 const { protect } = require("../middleware/auth");
 
@@ -51,4 +52,14 @@ router.put("/likes/:id", protect, likePost);
 //@desc    UnLike a post
 //@access  Protect
 router.put("/unlikes/:id", protect, unlikePost);
+
+//@route   POST api/post/comments/:id
+//@desc    Add comment
+//@access  Protect
+router.post(
+  "/comments/:id",
+  protect,
+  [check("text", "Text is required").not().isEmpty()],
+  postComment
+);
 module.exports = router;

@@ -167,3 +167,31 @@ exports.unlikePost = async (req, res) => {
     res.ststus(500).json({ msg: "Server error" });
   }
 };
+
+//POST COMMENT
+exports.postComment = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      errors: errors.array(),
+    });
+  }
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    const post = await Posts.findById(req.params.id);
+    const newComment = {
+      text: req.body.text,
+      name: user.name,
+      avatar: user.avatar,
+      user: req.user.id,
+    };
+
+    post.comments.unshift(newComment);
+    await post.save();
+    res.status(200).json(post.comments);
+  } catch (error) {
+    res.status(500).json({
+      msg: "Server error",
+    });
+  }
+};
