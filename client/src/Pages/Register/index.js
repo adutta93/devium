@@ -15,30 +15,41 @@ const Register = ({ setAlert }) => {
   });
   const { name, email, password, password2 } = formData;
 
+  // all alert objects
+  const error = {
+    position: "center",
+    icon: "error",
+    title: "Error",
+    showConfirmButton: false,
+    timer: 1500,
+    text: "Password dose not match",
+  };
+
+  const success = {
+    title: "Success",
+    text: "Registration successfull",
+    icon: "success",
+    position: "center",
+    showConfirmButton: false,
+    timer: 1500,
+  };
+
+  const warning = {
+    title: "warning",
+    text: "Please enter all field",
+    icon: "warning",
+    position: "center",
+    showConfirmButton: false,
+    timer: 1500,
+  };
   const alert = async (e) => {
     e.preventDefault();
-    if (password !== password2) {
-      setAlert(
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Error",
-          showConfirmButton: false,
-          timer: 1500,
-          text: "Password dose not match",
-        })
-      );
+    if (!name || !email || !password || !password2) {
+      setAlert(Swal.fire(warning));
+    } else if (password !== password2) {
+      setAlert(Swal.fire(error));
     } else {
-      setAlert(
-        Swal.fire({
-          title: "Success",
-          text: "Registration successfull",
-          icon: "success",
-          position: "center",
-          showConfirmButton: false,
-          timer: 1500,
-        })
-      );
+      setAlert(Swal.fire(success));
     }
   };
 
