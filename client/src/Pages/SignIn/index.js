@@ -1,39 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Components/Button";
-import LogInImg from "../../Assets/login.svg";
-import "./index.css";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+// import axios from "axios";
+
 const SignIn = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
+
+  const alert = async (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Success",
+      text: "Successfully loggedin",
+      icon: "success",
+      showCancelButton: true,
+    });
+    console.log(formData);
+  };
+
   return (
     <div>
-      <div className="container">
-        <div className="img">
-          <img src={LogInImg} />
-        </div>
-        <div className="login-content">
-          <form action="index.html">
-            <h2 className="title">Welcome</h2>
-            <div className="input-div one">
-              <div className="i">
-                <i className="fas fa-user"></i>
-              </div>
-              <div className="div">
-                <h5>Username</h5>
-                <input type="text" className="input" />
-              </div>
-            </div>
-            <div className="input-div pass">
-              <div className="i">
-                <i className="fas fa-lock"></i>
-              </div>
-              <div className="div">
-                <h5>Password</h5>
-                <input type="password" className="input" />
-              </div>
-            </div>
-            <a href="#">Forgot Password?</a>
-            <Button logInBtn value="Sign In" />
-          </form>
-        </div>
+      <div className="form-right">
+        <form onSubmit={(e) => alert(e)}>
+          <h1>Sign In</h1>
+
+          <div className="form-input">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-input"
+              value={email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="form-input">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
+              className="form-input"
+              placeholder="Password"
+            />
+          </div>
+          <Button bigBtn value="Sign In" />
+        </form>
+        <span>
+          Don't have an acount ? <Link to="/register">Sign Up</Link>
+        </span>
       </div>
     </div>
   );
