@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { connect } from "react-redux";
+import { setAlert } from "../../Redux/actions/alert";
 // import axios from "axios";
 
-const Register = () => {
+const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,20 +18,28 @@ const Register = () => {
   const alert = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      Swal.fire({
-        title: "Error",
-        text: "Password dose not match",
-        icon: "error",
-        showCancelButton: true,
-      });
+      setAlert(
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error",
+          showConfirmButton: false,
+          timer: 1500,
+          text: "Password dose not match",
+        })
+      );
+    } else {
+      setAlert(
+        Swal.fire({
+          title: "Success",
+          text: "Registration successfull",
+          icon: "success",
+          position: "center",
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      );
     }
-
-    Swal.fire({
-      title: "Success",
-      text: "Registration successfull",
-      icon: "success",
-      showCancelButton: true,
-    });
 
     console.log(formData);
     // else {
@@ -143,4 +153,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default connect(null, { setAlert })(Register);
