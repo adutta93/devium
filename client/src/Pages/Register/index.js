@@ -40,47 +40,6 @@ const Register = ({ setAlert }) => {
         })
       );
     }
-
-    console.log(formData);
-    // else {
-    //   const newUser = {
-    //     name,
-    //     email,
-    //     password,
-    //   };
-
-    //   try {
-    //     const config = {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     };
-    //     const body = JSON.stringify(newUser);
-    //     const result = await axios.post("/api/users/signup", body, config);
-    //     Swal.fire({
-    //       title: "Success",
-    //       text: "You've signed up!",
-    //       icon: "success",
-    //       showCancelButton: true,
-    //     });
-    //     console.log(result.data);
-    //   } catch (error) {
-    //     Swal.fire({
-    //       title: "Error",
-    //       text: "Something happened",
-    //       icon: "error",
-    //       showCancelButton: true,
-    //     });
-    //     console.log(error.response.data);
-    //   }
-
-    //   setFormData({
-    //     name: "",
-    //     email: "",
-    //     password: "",
-    //     password2: "",
-    //   });
-    // }
   };
 
   return (
