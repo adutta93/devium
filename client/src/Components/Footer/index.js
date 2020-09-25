@@ -10,7 +10,7 @@ import {
   Form,
   FormInput,
   FooterLinkItems,
-  FooterLinkTitle,
+  // FooterLinkTitle,
   FooterLink,
   FooterLinksContainer,
   FooterLinksWrapper,

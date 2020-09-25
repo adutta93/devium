@@ -3,10 +3,13 @@ import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
-import { setAlert } from "../../Redux/actions/alert";
+import { setAlert } from "../../Redux/actions/alert.action";
+import { register } from "../../Redux/actions/auth.action";
+import { token } from "morgan";
+
 // import axios from "axios";
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,17 +24,32 @@ const Register = ({ setAlert }) => {
     icon: "error",
     title: "Error",
     showConfirmButton: false,
-    timer: 1500,
+    timer: 3000,
     text: "Password dose not match",
   };
-
+  const errorAcount = {
+    position: "center",
+    icon: "error",
+    title: "Error",
+    showConfirmButton: false,
+    timer: 3000,
+    text: "User already exists",
+  };
+  const errorPassword = {
+    position: "center",
+    icon: "error",
+    title: "Error",
+    showConfirmButton: false,
+    timer: 3000,
+    text: "Password length should be of atleast 8 characters",
+  };
   const success = {
     title: "Success",
     text: "Registration successfull",
     icon: "success",
     position: "center",
     showConfirmButton: false,
-    timer: 1500,
+    timer: 3000,
   };
 
   const warning = {
@@ -40,19 +58,34 @@ const Register = ({ setAlert }) => {
     icon: "warning",
     position: "center",
     showConfirmButton: false,
-    timer: 1500,
+    timer: 3000,
   };
+  const token2 = localStorage.getItem("token");
   const alert = async (e) => {
     e.preventDefault();
+
     if (!name || !email || !password || !password2) {
-      setAlert(Swal.fire(warning));
+      Swal.fire(warning);
+    } else if (password.length < 8) {
+      Swal.fire(errorPassword);
     } else if (password !== password2) {
-      setAlert(Swal.fire(error));
+      Swal.fire(error);
     } else {
-      setAlert(Swal.fire(success));
+      register({ name, email, password });
+      console.log(token);
+      Swal.fire(success);
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        password2: "",
+      });
     }
   };
 
+  // else if (token2 === null) {
+  //   Swal.fire(errorAcount);
+  // }
   return (
     <div>
       <div className="form-right">
@@ -123,4 +156,8 @@ const Register = ({ setAlert }) => {
   );
 };
 
-export default connect(null, { setAlert })(Register);
+// const mapStateToProps = (state) => ({
+//   setAler: state.alert,
+//   register: state.register,
+// });
+export default connect(null, { setAlert, register })(Register);
