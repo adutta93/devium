@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./index.css";
 import Button from "../../Components/Button";
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -6,7 +7,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../Redux/actions/alert.action";
 import { register } from "../../Redux/actions/auth.action";
 import Alert from "../../Components/Alert";
-
+import regImg from "../../Assets/register.svg";
 // import axios from "axios";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -60,13 +61,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   //   Swal.fire(errorAcount);
   // }
   return (
-    <div>
-      <Alert />
-      <div className="form-right">
+    <div className="body">
+      <div className="container">
+        <Alert />
+        <h1 className="title">Register</h1>
         <form onSubmit={(e) => alert(e)}>
-          <h1>Sign Up</h1>
-          <div className="form-input">
-            <label className="form-label">Name</label>
+          <div className="items">
             <input
               type="text"
               name="name"
@@ -77,10 +77,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               }
               placeholder="Enter your name"
             />
-          </div>
 
-          <div className="form-input">
-            <label className="form-label">Email</label>
             <input
               type="email"
               name="email"
@@ -91,10 +88,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               }
               placeholder="Enter your email"
             />
-          </div>
 
-          <div className="form-input">
-            <label className="form-label">Password</label>
             <input
               type="password"
               name="password"
@@ -105,10 +99,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               className="form-input"
               placeholder="Password"
             />
-          </div>
 
-          <div className="form-input">
-            <label className="form-label">Confirm Password</label>
             <input
               type="password"
               name="password2"
@@ -120,10 +111,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               placeholder="Confirm Password"
             />
           </div>
+
           <Button bigBtn value="Sign Up" />
         </form>
-        <span>
-          Already have an acount ? <Link to="/signin">Sign In</Link>
+        <span className="footer-text">
+          Already have an acount ?{" "}
+          <Link className="footer" to="/signin">
+            Sign In
+          </Link>
         </span>
       </div>
     </div>

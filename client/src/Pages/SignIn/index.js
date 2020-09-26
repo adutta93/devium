@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "../../Components/Button";
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import "./index.css";
 // import axios from "axios";
 import { connect } from "react-redux";
 import { login } from "../../Redux/actions/auth.action";
@@ -43,13 +44,11 @@ const SignIn = ({ login, isAuthenticated, user }) => {
   }
 
   return (
-    <div>
-      <div className="form-right">
+    <div className="body">
+      <div className="container">
+        <h1 className="title">Login</h1>
         <form onSubmit={(e) => alert(e)}>
-          <h1>Sign In</h1>
-
-          <div className="form-input">
-            <label className="form-label">Email</label>
+          <div className="items">
             <input
               type="email"
               name="email"
@@ -60,10 +59,7 @@ const SignIn = ({ login, isAuthenticated, user }) => {
               }
               placeholder="Enter your email"
             />
-          </div>
 
-          <div className="form-input">
-            <label className="form-label">Password</label>
             <input
               type="password"
               name="password"
@@ -77,8 +73,11 @@ const SignIn = ({ login, isAuthenticated, user }) => {
           </div>
           <Button bigBtn value="Sign In" />
         </form>
-        <span>
-          Don't have an acount ? <Link to="/register">Sign Up</Link>
+        <span className="footer-text">
+          Don't have an acount ?{" "}
+          <Link className="footer" to="/register">
+            Sign Up
+          </Link>
         </span>
       </div>
     </div>
