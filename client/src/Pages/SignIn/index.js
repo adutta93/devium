@@ -39,7 +39,7 @@ const SignIn = ({ login, isAuthenticated, user }) => {
 
   //redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/premium" />;
   }
 
   return (

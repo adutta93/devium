@@ -40,6 +40,7 @@ export const Btn = styled.button`
   @media screen and (max-width: 768px) {
     margin-left: -0.1rem;
     width: 100%;
+    text-decoration: none;
     /* flex-basis: 100%; */
     display: flex;
     justify-content: center;
