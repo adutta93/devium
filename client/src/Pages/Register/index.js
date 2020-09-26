@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { setAlert } from "../../Redux/actions/alert.action";
 import { register } from "../../Redux/actions/auth.action";
+import Alert from "../../Components/Alert";
 
 // import axios from "axios";
 
@@ -33,42 +34,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     e.preventDefault();
 
     if (!name || !email || !password || !password2) {
-      Swal.fire({
-        title: "warning",
-        text: "Please enter all field",
-        icon: "warning",
-        position: "center",
-        showConfirmButton: false,
-        timer: 3000,
-      });
+      setAlert("Enter all fields", "warning");
     } else if (password.length < 8) {
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Error",
-        showConfirmButton: false,
-        timer: 3000,
-        text: "Password length should be of atleast 8 characters",
-      });
+      setAlert("Password length should be of atleast 8 characters", "warning");
     } else if (password !== password2) {
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Error",
-        showConfirmButton: false,
-        timer: 3000,
-        text: "Password dose not match",
-      });
+      setAlert("Password dose not match", "danger");
+    } else if (token2 === null) {
+      setAlert("User already exists", "danger");
     } else {
       register({ name, email, password });
-      Swal.fire({
-        title: "Success",
-        text: "Registration successfull",
-        icon: "success",
-        position: "center",
-        showConfirmButton: false,
-        timer: 3000,
-      });
+      setAlert("Registration successfull", "success");
       setFormData({
         name: "",
         email: "",
@@ -86,6 +61,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   // }
   return (
     <div>
+      <Alert />
       <div className="form-right">
         <form onSubmit={(e) => alert(e)}>
           <h1>Sign Up</h1>
