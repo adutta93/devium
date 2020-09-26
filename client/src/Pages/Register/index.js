@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { setAlert } from "../../Redux/actions/alert.action";
 import { register } from "../../Redux/actions/auth.action";
-import { token } from "morgan";
 
 // import axios from "axios";
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,61 +18,57 @@ const Register = ({ setAlert, register }) => {
   const { name, email, password, password2 } = formData;
 
   // all alert objects
-  const error = {
-    position: "center",
-    icon: "error",
-    title: "Error",
-    showConfirmButton: false,
-    timer: 3000,
-    text: "Password dose not match",
-  };
-  const errorAcount = {
-    position: "center",
-    icon: "error",
-    title: "Error",
-    showConfirmButton: false,
-    timer: 3000,
-    text: "User already exists",
-  };
-  const errorPassword = {
-    position: "center",
-    icon: "error",
-    title: "Error",
-    showConfirmButton: false,
-    timer: 3000,
-    text: "Password length should be of atleast 8 characters",
-  };
-  const success = {
-    title: "Success",
-    text: "Registration successfull",
-    icon: "success",
-    position: "center",
-    showConfirmButton: false,
-    timer: 3000,
-  };
 
-  const warning = {
-    title: "warning",
-    text: "Please enter all field",
-    icon: "warning",
-    position: "center",
-    showConfirmButton: false,
-    timer: 3000,
-  };
+  // const errorAcount = {
+  //   position: "center",
+  //   icon: "error",
+  //   title: "Error",
+  //   showConfirmButton: false,
+  //   timer: 3000,
+  //   text: "User already exists",
+  // };
+
   const token2 = localStorage.getItem("token");
   const alert = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password || !password2) {
-      Swal.fire(warning);
+      Swal.fire({
+        title: "warning",
+        text: "Please enter all field",
+        icon: "warning",
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000,
+      });
     } else if (password.length < 8) {
-      Swal.fire(errorPassword);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error",
+        showConfirmButton: false,
+        timer: 3000,
+        text: "Password length should be of atleast 8 characters",
+      });
     } else if (password !== password2) {
-      Swal.fire(error);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error",
+        showConfirmButton: false,
+        timer: 3000,
+        text: "Password dose not match",
+      });
     } else {
       register({ name, email, password });
-      console.log(token);
-      Swal.fire(success);
+      Swal.fire({
+        title: "Success",
+        text: "Registration successfull",
+        icon: "success",
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000,
+      });
       setFormData({
         name: "",
         email: "",
@@ -83,6 +78,9 @@ const Register = ({ setAlert, register }) => {
     }
   };
 
+  if (isAuthenticated) {
+    return <Redirect to="/profile" />;
+  }
   // else if (token2 === null) {
   //   Swal.fire(errorAcount);
   // }
@@ -156,8 +154,8 @@ const Register = ({ setAlert, register }) => {
   );
 };
 
-// const mapStateToProps = (state) => ({
-//   setAler: state.alert,
-//   register: state.register,
-// });
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  isUser: state.auth.user,
+});
+export default connect(mapStateToProps, { setAlert, register })(Register);

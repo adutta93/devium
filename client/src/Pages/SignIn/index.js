@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 // import axios from "axios";
+import { connect } from "react-redux";
+import { login } from "../../Redux/actions/auth.action";
 
-const SignIn = () => {
+const SignIn = ({ login, isAuthenticated, user }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,14 +15,32 @@ const SignIn = () => {
 
   const alert = async (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: "Success",
-      text: "Successfully loggedin",
-      icon: "success",
-      showCancelButton: true,
-    });
-    console.log(formData);
+    if (!email || !password) {
+      Swal.fire({
+        title: "warning",
+        text: "Please enter all field",
+        icon: "warning",
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+    } else {
+      login({ email, password });
+      Swal.fire({
+        title: "Success",
+        text: "Log In Successfull",
+        icon: "success",
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+    }
   };
+
+  //redirect if logged in
+  if (isAuthenticated) {
+    return <Redirect to="/profile" />;
+  }
 
   return (
     <div>
@@ -65,4 +85,9 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  isUser: state.auth.user,
+});
+
+export default connect(mapStateToProps, { login })(SignIn);
