@@ -34,6 +34,10 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
         </NavItem>
 
         <NavItem>
+          <NavLinks to="/userprofile">Profile</NavLinks>
+        </NavItem>
+
+        <NavItem>
           <NavLinks to="/premium">
             <Button value="Premium" transparent />
           </NavLinks>

@@ -7,7 +7,8 @@ const Home = lazy(() => import("../Pages/Home"));
 const Premium = lazy(() => import("../Pages/Premium"));
 const Register = lazy(() => import("../Pages/Register"));
 const SignIn = lazy(() => import("../Pages/SignIn"));
-const UserProfile = lazy(() => import("../Pages/UserProfile"));
+const ManageProfile = lazy(() => import("../Pages/ManageProfile"));
+const CreateProfile = lazy(() => import("../Pages/CreateProfile"));
 const AppRouter = () => {
   return (
     <div>
@@ -17,7 +18,8 @@ const AppRouter = () => {
         <Route exact path="/register" component={Register} />
         <Route exact path="/signin" component={SignIn} />
         <PrivateRoute exact path="/premium" component={Premium} />
-        <PrivateRoute exact path="/userprofile" component={UserProfile} />
+        <PrivateRoute exact path="/manageprofile" component={ManageProfile} />
+        <PrivateRoute exact path="/create-profile" component={CreateProfile} />
       </Switch>
       {/*<Footer />*/}
     </div>

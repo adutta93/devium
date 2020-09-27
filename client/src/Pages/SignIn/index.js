@@ -33,14 +33,14 @@ const SignIn = ({ login, isAuthenticated, user }) => {
         icon: "success",
         position: "center",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 1500,
       });
     }
   };
 
   //redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to="/userprofile" />;
+    return <Redirect to="/manageprofile" />;
   }
 
   return (

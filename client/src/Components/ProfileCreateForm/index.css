@@ -1,0 +1,160 @@
+h1 {
+  color: #03a87c;
+}
+
+.instruction {
+  margin-left: 14rem;
+}
+
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  margin-left: 14rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: 14rem;
+}
+
+.form .form-group {
+  margin: 1.2rem 0;
+}
+
+.form .form-text {
+  margin-left: 14rem;
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"],
+.form select,
+.form textarea {
+  display: block;
+  width: 70%;
+  margin-left: 14rem;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+
+.form input[type="submit"],
+button {
+  font: inherit;
+}
+
+.social-btn {
+  margin-left: 14rem;
+}
+
+.form .social-input {
+  display: flex;
+  margin-left: 3rem;
+
+  width: 100%;
+}
+
+.social-input input {
+  margin-left: 3rem;
+}
+/* .form .social-input i {
+  padding: 0.5rem;
+  width: 4rem;
+} */
+
+.form .social-input i.fa-twitter {
+  color: #38a1f3;
+}
+.form .social-input i.fa-facebook {
+  color: #3b5998;
+}
+.form .social-input i.fa-instagram {
+  color: #3f729b;
+}
+.form .social-input i.fa-youtube {
+  color: #c4302b;
+}
+.form .social-input i.fa-linkedin {
+  color: #0077b5;
+}
+
+.submit-grp {
+  margin-left: 14rem;
+  margin-top: 2rem;
+}
+
+.go-back {
+  margin-left: 1rem;
+}
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.table th {
+  background: var(--light-color);
+}
+
+@media screen and (max-width: 960px) {
+  .form {
+    margin-left: -12rem;
+  }
+  .instruction {
+    margin-left: -10rem;
+  }
+
+  .large {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+  }
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"],
+  .form input[type="date"],
+  .form select,
+  .form textarea {
+    display: block;
+    width: 60%;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+  }
+
+  .social-btn {
+    width: 60%;
+    margin-left: 14rem;
+  }
+
+  .submit-grp {
+    width: 60%;
+    margin-left: 14rem;
+    margin-top: 2rem;
+  }
+
+  .go-back {
+    margin-left: -0.1rem;
+    margin-top: 1rem;
+  }
+
+  small {
+    word-wrap: break-word;
+  }
+}
