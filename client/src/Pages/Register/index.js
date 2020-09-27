@@ -55,7 +55,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/userprofile" />;
   }
   // else if (token2 === null) {
   //   Swal.fire(errorAcount);

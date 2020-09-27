@@ -30,7 +30,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
       </HamburgerMenu>
       <NavMenu onClick={menuToggle} click={click}>
         <NavItem>
-          <NavLinks to="/profile">Profile</NavLinks>
+          <NavLinks to="/posts">Posts</NavLinks>
         </NavItem>
 
         <NavItem>
