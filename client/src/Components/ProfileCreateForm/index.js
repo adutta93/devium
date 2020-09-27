@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { createProfile } from "../../Redux/actions/profile.action";
 import Button from "../Button";
 import { AiOutlineUser } from "react-icons/ai";
+import Swal from "sweetalert2";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -29,7 +31,7 @@ const initialState = {
   stackOverflow: "",
 };
 
-const ProfileCreateForm = () => {
+const ProfileCreateForm = ({ createProfile, history }) => {
   const [formData, setFormData] = useState(initialState);
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -54,7 +56,18 @@ const ProfileCreateForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    createProfile(formData, history);
+    Swal.fire({
+      title: "Success",
+      text: "Done",
+      icon: "success",
+      position: "center",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   return (
     <Fragment>
@@ -301,4 +314,4 @@ const ProfileCreateForm = () => {
 //   profile: state.profile
 // });
 
-export default connect()(ProfileCreateForm);
+export default connect(null, { createProfile })(withRouter(ProfileCreateForm));

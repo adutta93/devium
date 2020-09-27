@@ -40,8 +40,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       setAlert("Password length should be of atleast 8 characters", "warning");
     } else if (password !== password2) {
       setAlert("Password dose not match", "danger");
-    } else if (token2 === null) {
-      setAlert("User already exists", "danger");
     } else {
       register({ name, email, password });
       setAlert("Registration successfull", "success");
