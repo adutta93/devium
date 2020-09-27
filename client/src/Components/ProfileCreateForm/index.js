@@ -58,8 +58,8 @@ const ProfileCreateForm = () => {
 
   return (
     <Fragment>
-      <h1 className="large ">Edit Your Profile</h1>
-      <p className="lead">
+      <h1 className="large-text ">Edit Your Profile</h1>
+      <p className="lead-text">
         {" "}
         <AiOutlineUser
           size={30}
@@ -176,7 +176,7 @@ const ProfileCreateForm = () => {
                 color="#00acee"
                 style={{
                   marginTop: "5px",
-                  marginRight: "-12rem",
+                  marginRight: "-10rem",
                   marginLeft: "11rem",
                 }}
               />
@@ -195,7 +195,7 @@ const ProfileCreateForm = () => {
                 color="#4267B2"
                 style={{
                   marginTop: "5px",
-                  marginRight: "-12rem",
+                  marginRight: "-10rem",
                   marginLeft: "11rem",
                 }}
               />
@@ -214,7 +214,7 @@ const ProfileCreateForm = () => {
                 color="red"
                 style={{
                   marginTop: "5px",
-                  marginRight: "-12rem",
+                  marginRight: "-10rem",
                   marginLeft: "11rem",
                 }}
               />
@@ -233,7 +233,7 @@ const ProfileCreateForm = () => {
                 color="#0e76a8"
                 style={{
                   marginTop: "5px",
-                  marginRight: "-12rem",
+                  marginRight: "-10rem",
                   marginLeft: "11rem",
                 }}
               />
@@ -252,7 +252,7 @@ const ProfileCreateForm = () => {
                 color="#dd2a7b"
                 style={{
                   marginTop: "5px",
-                  marginRight: "-12rem",
+                  marginRight: "-10rem",
                   marginLeft: "11rem",
                 }}
               />
@@ -271,7 +271,7 @@ const ProfileCreateForm = () => {
                 color="#f48024"
                 style={{
                   marginTop: "5px",
-                  marginRight: "-12rem",
+                  marginRight: "-10rem",
                   marginLeft: "11rem",
                 }}
               />

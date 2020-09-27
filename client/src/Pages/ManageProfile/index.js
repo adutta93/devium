@@ -6,6 +6,7 @@ import Header from "../../Components/Header";
 import { connect } from "react-redux";
 import Loader from "../../Components/Loader";
 import Button from "../../Components/Button";
+import Footer from "../../Components/Footer";
 import { getUserProfile } from "../../Redux/actions/profile.action";
 
 const ManageProfile = ({
@@ -38,6 +39,8 @@ const ManageProfile = ({
           </div>
         )}
       </Fragment>
+      <div className="free-space"></div>
+      <Footer />
     </div>
   );
 };
