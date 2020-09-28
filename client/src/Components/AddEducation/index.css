@@ -1,0 +1,150 @@
+h1 {
+  color: #03a87c;
+}
+
+.edu-instruction {
+  margin-left: 12rem;
+}
+
+.edu-large-text {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  margin-left: 12rem;
+}
+
+.edu-lead-text {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: 12rem;
+}
+.edu-h4 {
+  color: #03a87c;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-left: 12rem;
+}
+
+.edu-current-check {
+  color: #03a87c;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-left: 12rem;
+}
+.edu-form .edu-form-group {
+  margin: 1.2rem 0;
+}
+
+.edu-form .edu-form-text {
+  margin-left: 14rem;
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.edu-form input[type="text"],
+.edu-form input[type="email"],
+.edu-form input[type="password"],
+.edu-form input[type="date"],
+.edu-form select,
+.edu-form textarea {
+  display: block;
+  width: 70%;
+  margin-left: 12rem;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+
+.edu-form input[type="submit"],
+button {
+  font: inherit;
+}
+
+.edu-social-btn {
+  margin-left: 12rem;
+}
+
+.edu-form .edu-social-input {
+  display: flex;
+  margin-left: 3rem;
+  width: 91%;
+}
+
+.edu-social-input input {
+  margin-left: 3rem;
+}
+/* .form .social-input i {
+        padding: 0.5rem;
+        width: 4rem;
+      } */
+
+.edu-submit-grp {
+  margin-left: 12rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.edu-go-back {
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 960px) {
+  .edu-form {
+    margin-left: -10rem;
+  }
+  .edu-instruction {
+    margin-left: 2rem;
+  }
+
+  .edu-large-text {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+
+  .edu-lead-text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+  }
+
+  .edu-form input[type="text"],
+  .edu-form input[type="email"],
+  .edu-form input[type="password"],
+  .edu-form input[type="date"],
+  .edu-form select,
+  .edu-form textarea {
+    display: block;
+    width: 60%;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+  }
+  /* .edit-social-input {
+        width: 40%;
+        margin-left: 1rem;
+      } */
+  .edu-social-btn {
+    width: 60%;
+    margin-left: 12rem;
+  }
+
+  .edu-submit-grp {
+    width: 60%;
+    margin-left: 12rem;
+    margin-top: 2rem;
+  }
+
+  .edu-go-back {
+    margin-left: -0.1rem;
+    margin-top: 1rem;
+  }
+
+  .edu-form-text {
+    margin-left: -2rem;
+  }
+}
