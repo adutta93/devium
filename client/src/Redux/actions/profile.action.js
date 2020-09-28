@@ -1,5 +1,4 @@
 import axios from "axios";
-import { set } from "mongoose";
 import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "../actionTypes";
 import { setAlert } from "./alert.action";
 
