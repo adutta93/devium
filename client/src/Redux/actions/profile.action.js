@@ -1,6 +1,6 @@
 import axios from "axios";
 import { set } from "mongoose";
-import { GET_PROFILE, PROFILE_ERROR } from "../actionTypes";
+import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "../actionTypes";
 import { setAlert } from "./alert.action";
 
 //get current profile
@@ -46,6 +46,78 @@ export const createProfile = (formData, history, edit = false) => async (
     if (!edit) {
       history.push("/manageprofile");
     }
+  } catch (error) {
+    const errors = error.response.data.error;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//add experience
+export const addExperience = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const response = await axios.put(
+      "/api/profile/user/experience",
+      formData,
+      config
+    );
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: response.data,
+    });
+
+    history.push("/manageprofile");
+  } catch (error) {
+    const errors = error.response.data.error;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//add education
+export const addEducation = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const response = await axios.put(
+      "/api/profile/user/education",
+      formData,
+      config
+    );
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: response.data,
+    });
+
+    history.push("/manageprofile");
   } catch (error) {
     const errors = error.response.data.error;
     if (errors) {

@@ -10,7 +10,7 @@ const ProfileActions = () => {
         <Button className="action-btn" value="Edit profile" />
       </Link>
 
-      <Link to="/add-experience">
+      <Link to="/add-experirnce">
         <Button className="action-btn" value="Add Experience" />
       </Link>
 
