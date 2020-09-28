@@ -9,6 +9,7 @@ const Register = lazy(() => import("../Pages/Register"));
 const SignIn = lazy(() => import("../Pages/SignIn"));
 const ManageProfile = lazy(() => import("../Pages/ManageProfile"));
 const CreateProfile = lazy(() => import("../Pages/CreateProfile"));
+const EditProfile = lazy(() => import(".././Components/EditProfileForm"));
 const AppRouter = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const AppRouter = () => {
         <PrivateRoute exact path="/premium" component={Premium} />
         <PrivateRoute exact path="/manageprofile" component={ManageProfile} />
         <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+        <PrivateRoute exact path="/edit-profile" component={EditProfile} />
       </Switch>
       {/*<Footer />*/}
     </div>

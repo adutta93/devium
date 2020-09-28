@@ -2,6 +2,7 @@ import axios from "axios";
 import { set } from "mongoose";
 import { GET_PROFILE, PROFILE_ERROR } from "../actionTypes";
 import { setAlert } from "./alert.action";
+
 //get current profile
 export const getUserProfile = () => async (dispatch) => {
   try {
@@ -22,7 +23,6 @@ export const getUserProfile = () => async (dispatch) => {
 };
 
 //create or update profile
-
 export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {

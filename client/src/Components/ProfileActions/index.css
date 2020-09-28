@@ -1,0 +1,21 @@
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-left: -36rem;
+  margin-top: 2rem;
+}
+.action-btn {
+  margin-right: 2rem;
+}
+
+@media screen and (max-width: 960px) {
+  .actions {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+  }
+  .action-btn {
+    width: 95%;
+    margin-top: 2rem;
+  }
+}

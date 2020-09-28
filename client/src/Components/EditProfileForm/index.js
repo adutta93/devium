@@ -1,7 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { createProfile } from "../../Redux/actions/profile.action";
+import {
+  createProfile,
+  getUserProfile,
+} from "../../Redux/actions/profile.action";
 import Button from "../Button";
 import { AiOutlineUser } from "react-icons/ai";
 import Swal from "sweetalert2";
@@ -31,10 +34,36 @@ const initialState = {
   stackOverflow: "",
 };
 
-const ProfileCreateForm = ({ createProfile, history }) => {
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getUserProfile,
+  history,
+}) => {
   const [formData, setFormData] = useState(initialState);
-
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  useEffect(() => {
+    getUserProfile();
+
+    setFormData({
+      company: loading || !profile.company ? "" : profile.company,
+      website: loading || !profile.website ? "" : profile.website,
+      location: loading || !profile.location ? "" : profile.location,
+      status: loading || !profile.status ? "" : profile.status,
+      skills: loading || !profile.skills ? "" : profile.skills.join(","),
+      githubusername:
+        loading || !profile.githubusername ? "" : profile.githubusername,
+      bio: loading || !profile.bio ? "" : profile.bio,
+      twitter: loading || !profile.twitter ? "" : profile.twitter,
+      facebook: loading || !profile.facebook ? "" : profile.facebook,
+      linkedin: loading || !profile.linkedin ? "" : profile.linkedin,
+      youtube: loading || !profile.youtube ? "" : profile.youtube,
+      instagram: loading || !profile.instagram ? "" : profile.instagram,
+      stackOverflow:
+        loading || !profile.stackOverflow ? "" : profile.stackOverflow,
+    });
+  }, [loading]);
 
   const {
     company,
@@ -58,7 +87,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
     Swal.fire({
       title: "Success",
       text: "Done",
@@ -71,8 +100,8 @@ const ProfileCreateForm = ({ createProfile, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large-text ">Create Your Profile</h1>
-      <p className="lead-text">
+      <h1 className="edit-large-text ">Edit Your Profile</h1>
+      <p className="edit-lead-text">
         {" "}
         <AiOutlineUser
           size={30}
@@ -81,11 +110,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             marginBottom: "-5px",
           }}
         />{" "}
-        Add some information to your profile
+        Add some changes to your profile
       </p>
-      <small className="instruction">* = required field</small>
-      <form className="form" onSubmit={onSubmit}>
-        <div className="form-group">
+      <small className="edit-instruction">* = required field</small>
+      <form className="edit-form" onSubmit={onSubmit}>
+        <div className="edit-form-group">
           <select name="status" value={status} onChange={onChange}>
             <option>* Select Professional Status</option>
             <option value="Developer">Developer</option>
@@ -97,11 +126,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             <option value="Intern">Intern</option>
             <option value="Other">Other</option>
           </select>
-          <small className="form-text">
+          <small className="edit-form-text">
             Give us an idea of where you are at in your career
           </small>
         </div>
-        <div className="form-group">
+        <div className="edit-form-group">
           <input
             type="text"
             placeholder="Company"
@@ -109,11 +138,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             value={company}
             onChange={onChange}
           />
-          <small className="form-text">
+          <small className="edit-form-text">
             Could be your own company or one you work for
           </small>
         </div>
-        <div className="form-group">
+        <div className="edit-form-group">
           <input
             type="text"
             placeholder="Website"
@@ -121,11 +150,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             value={website}
             onChange={onChange}
           />
-          <small className="form-text">
+          <small className="edit-form-text">
             Could be your own or a company website
           </small>
         </div>
-        <div className="form-group">
+        <div className="edit-form-group">
           <input
             type="text"
             placeholder="Location"
@@ -133,11 +162,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             value={location}
             onChange={onChange}
           />
-          <small className="form-text">
+          <small className="edit-form-text">
             City & state suggested (eg. Boston, MA)
           </small>
         </div>
-        <div className="form-group">
+        <div className="edit-form-group">
           <input
             type="text"
             placeholder="* Skills"
@@ -145,11 +174,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             value={skills}
             onChange={onChange}
           />
-          <small className="form-text">
+          <small className="edit-form-text">
             Please use comma separated values (eg. React, Node, Graphql etc)
           </small>
         </div>
-        <div className="form-group">
+        <div className="edit-form-group">
           <input
             type="text"
             placeholder="Github Username"
@@ -157,22 +186,24 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             value={githubusername}
             onChange={onChange}
           />
-          <small className="form-text">
+          <small className="edit-form-text">
             If you want your latest repos and a Github link, include your
             username
           </small>
         </div>
-        <div className="form-group">
+        <div className="edit-form-group">
           <textarea
             placeholder="A short bio of yourself"
             name="bio"
             value={bio}
             onChange={onChange}
           />
-          <small className="form-text">Tell us a little about yourself</small>
+          <small className="edit-form-text">
+            Tell us a little about yourself
+          </small>
         </div>
 
-        <div className="social-btn">
+        <div className="edit-social-btn">
           <Button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
             value="Add social links"
@@ -183,7 +214,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
 
         {displaySocialInputs && (
           <Fragment>
-            <div className="form-group social-input">
+            <div className="edit-form-group edit-social-input">
               <FaTwitter
                 size={30}
                 color="#00acee"
@@ -199,10 +230,11 @@ const ProfileCreateForm = ({ createProfile, history }) => {
                 name="twitter"
                 value={twitter}
                 onChange={onChange}
+                className="edit-social-input"
               />
             </div>
 
-            <div className="form-group social-input">
+            <div className="edit-form-group edit-social-input">
               <FaFacebook
                 size={30}
                 color="#4267B2"
@@ -221,7 +253,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
               />
             </div>
 
-            <div className="form-group social-input">
+            <div className="edit-form-group edit-social-input">
               <FaYoutube
                 size={30}
                 color="red"
@@ -240,7 +272,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
               />
             </div>
 
-            <div className="form-group social-input">
+            <div className="edit-form-group edit-social-input">
               <FaLinkedinIn
                 size={30}
                 color="#0e76a8"
@@ -259,7 +291,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
               />
             </div>
 
-            <div className="form-group social-input">
+            <div className="edit-form-group edit-social-input">
               <FaInstagram
                 size={30}
                 color="#dd2a7b"
@@ -278,7 +310,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
               />
             </div>
 
-            <div className="form-group social-input">
+            <div className="edit-form-group edit-social-input">
               <FaStackOverflow
                 size={30}
                 color="#f48024"
@@ -299,10 +331,10 @@ const ProfileCreateForm = ({ createProfile, history }) => {
           </Fragment>
         )}
 
-        <div className="submit-grp">
+        <div className="edit-submit-grp">
           <Button type="submit" value="Submit" />
           <Link to="/manageprofile">
-            <Button className="go-back" transparent value="Go Back" />
+            <Button className="edit-go-back" transparent value="Go Back" />
           </Link>
         </div>
       </form>
@@ -310,8 +342,10 @@ const ProfileCreateForm = ({ createProfile, history }) => {
   );
 };
 
-// const mapStateToProps = state => ({
-//   profile: state.profile
-// });
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
 
-export default connect(null, { createProfile })(withRouter(ProfileCreateForm));
+export default connect(mapStateToProps, { createProfile, getUserProfile })(
+  withRouter(EditProfile)
+);

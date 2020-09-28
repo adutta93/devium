@@ -7,7 +7,9 @@ import { connect } from "react-redux";
 import Loader from "../../Components/Loader";
 import Button from "../../Components/Button";
 import Footer from "../../Components/Footer";
+import ProfileAction from "../../Components/ProfileActions";
 import { getUserProfile } from "../../Redux/actions/profile.action";
+import ProfileActions from "../../Components/ProfileActions";
 
 const ManageProfile = ({
   getUserProfile,
@@ -29,7 +31,9 @@ const ManageProfile = ({
           <AiOutlineUser /> Welcome {user && user.name}
         </p>
         {profile !== null ? (
-          <h4>Has</h4>
+          <Fragment>
+            <ProfileActions />
+          </Fragment>
         ) : (
           <div className="create-profile">
             <p>You havent't created any profile yet, please create one!</p>
