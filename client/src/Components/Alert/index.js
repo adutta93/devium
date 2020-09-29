@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import "./index.css";
 const Alert = ({ alerts }) =>
   alerts !== null &&
@@ -20,10 +19,6 @@ const Alert = ({ alerts }) =>
       </div>
     </div>
   ));
-
-// Alert.propTypes = {
-//   alerts: PropTypes.array.isRequired,
-// };
 
 const mapStateToProps = (state) => ({
   alerts: state.alert,

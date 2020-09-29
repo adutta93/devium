@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../Redux/actions/alert.action";
 import { register } from "../../Redux/actions/auth.action";
 import Alert from "../../Components/Alert";
-import regImg from "../../Assets/register.svg";
+// import regImg from "../../Assets/register.svg";
 // import axios from "axios";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -30,6 +30,23 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   //   text: "User already exists",
   // };
 
+  const error = {
+    position: "center",
+    icon: "error",
+    title: "Error",
+    showConfirmButton: false,
+    timer: 3000,
+    text: "Password dose not match",
+  };
+  // let token2;
+  // const getToken = async () => {
+  //   const token2 = await localStorage.getItem("token");
+  //   console.log("My tokennnnn =====>", token2);
+  //   return token2;
+  // };
+  // let token = getToken();
+  // console.log(token);
+
   const token2 = localStorage.getItem("token");
   const alert = async (e) => {
     e.preventDefault();
@@ -39,7 +56,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     } else if (password.length < 8) {
       setAlert("Password length should be of atleast 8 characters", "warning");
     } else if (password !== password2) {
-      setAlert("Password dose not match", "danger");
+      // setAlert("Password dose not match", "danger");
+      Swal.fire(error);
     } else {
       register({ name, email, password });
       setAlert("Registration successfull", "success");
@@ -51,6 +69,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       });
     }
   };
+
+  // console.log("My tokennnnn =====>", token2);
 
   if (isAuthenticated) {
     return <Redirect to="/manageprofile" />;

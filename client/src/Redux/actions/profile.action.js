@@ -1,6 +1,7 @@
 import axios from "axios";
 import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "../actionTypes";
 import { setAlert } from "./alert.action";
+import Swal from "sweetalert2";
 
 //get current profile
 export const getUserProfile = () => async (dispatch) => {
@@ -82,16 +83,16 @@ export const addExperience = (formData, history) => async (dispatch) => {
 
     history.push("/manageprofile");
   } catch (error) {
-    const errors = error.response.data.error;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    }
+    // const errors = error.response.data.error;
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
 
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }

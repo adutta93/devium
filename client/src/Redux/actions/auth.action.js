@@ -10,6 +10,17 @@ import {
   CLEAR_PROFILE,
 } from "../actionTypes";
 import setAuthToken from "../utils/setAuthToken";
+import Swal from "sweetalert2";
+
+// error objects
+const error = {
+  position: "center",
+  icon: "error",
+  title: "Error",
+  showConfirmButton: false,
+  timer: 3000,
+  text: "User already exists",
+};
 
 //load user
 export const loadUser = () => async (dispatch) => {
@@ -41,6 +52,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   const body = JSON.stringify({ name, email, password });
   try {
     const response = await axios.post("/api/users/signup", body, config);
+
     dispatch({
       type: REGISTER_SUCCESS,
       payload: response.data,

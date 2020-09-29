@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 // import { Icon } from "../Header/index.style";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import {
@@ -38,7 +39,9 @@ const Footer = () => {
       <FooterLinksContainer>
         <FooterLinksWrapper>
           <FooterLinkItems>
-            <FooterLink to="/register">Get Started</FooterLink>
+            <FooterLink>
+              <Link to="/register">Get Started</Link>
+            </FooterLink>
             <FooterLink>Testimonials</FooterLink>
           </FooterLinkItems>
 
@@ -49,7 +52,10 @@ const Footer = () => {
         </FooterLinksWrapper>
         <FooterLinksWrapper>
           <FooterLinkItems>
-            <FooterLink to="/signin">Sign In</FooterLink>
+            <FooterLink>
+              {" "}
+              <Link to="/signin">Sign In</Link>
+            </FooterLink>
             <FooterLink>Investors</FooterLink>
           </FooterLinkItems>
 

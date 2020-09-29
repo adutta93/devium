@@ -16,15 +16,20 @@ import ShowExperience from "../../Components/ShowExperience";
 const ManageProfile = ({
   getUserProfile,
   auth: { user },
-  compProfile: { profile, loading },
+  profile,
+  loading,
 }) => {
   useEffect(() => {
     getUserProfile();
-  }, []);
+  }, [getUserProfile]);
+
+  if (profile && profile.userProfile)
+    console.log("Dataaaaaaaa =====>", profile.userProfile);
+  // console.log("Myyyyyyyyyy Dataaaaaaaa =====>", profile);
   return profile === null && loading ? (
     <Loader />
   ) : (
-    <div>
+    <Fragment>
       <Header />
       <div>
         <h1 className="large">Manage Profile</h1>
@@ -33,11 +38,19 @@ const ManageProfile = ({
           <AiOutlineUser /> Welcome {user && user.name}
         </p>
         {profile !== null ? (
-          <div>
+          <Fragment>
             <ProfileActions />
-            <ShowExperience experience={profile.experience} />
-            <ShowEducation education={profile.education} />
-          </div>
+            <ShowExperience
+              experience={
+                profile.userProfile ? profile.userProfile.experience : []
+              }
+            />
+            <ShowEducation
+              education={
+                profile.userProfile ? profile.userProfile.education : []
+              }
+            />
+          </Fragment>
         ) : (
           <div className="create-profile">
             <p>You havent't created any profile yet, please create one!</p>
@@ -49,13 +62,14 @@ const ManageProfile = ({
       </div>
       <div className="free-space"></div>
       <Footer />
-    </div>
+    </Fragment>
   );
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  compProfile: state.profile,
+  profile: state.profile.profile,
+  loading: state.profile.loading,
 });
 
 export default connect(mapStateToProps, { getUserProfile })(ManageProfile);

@@ -101,7 +101,7 @@ export const FooterLinkTitle = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const FooterLink = styled(Link)`
+export const FooterLink = styled.div`
   font-size: 1rem;
   color: #fff;
   text-decoration: none;

@@ -1,24 +1,26 @@
 import React, { Fragment } from "react";
 import Moment from "react-moment";
+import moment from "moment";
 import Button from "../Button";
 
-const ShowEducation = ({ experience }) => {
-  const experiences = experience.map((exp) => (
-    <td key={exp._id}>
-      <td>{exp.company}</td>
-      <td>{exp.title}</td>
+const ShowEducation = ({ education }) => {
+  console.log("From ShowEducation ==> ", education);
+  const educations = education.map((edu) => (
+    <tr key={edu._id}>
+      <td>{edu.school}</td>
+      <td>{edu.degree}</td>
       <td>
-        {<Moment format="DD/MM/YYYY">{exp.from}</Moment>} -{" "}
-        {exp.to === null ? (
+        <Moment format="DD/MM/YYYY">{moment.utc(edu.from)}</Moment> -{" "}
+        {edu.to === null ? (
           "Now"
         ) : (
-          <Moment format="DD/MM/YYYY">{exp.to}</Moment>
+          <Moment format="DD/MM/YYYY">{moment.utc(edu.to)}</Moment>
         )}
       </td>
       <td>
         <Button value="Delete" />
       </td>
-    </td>
+    </tr>
   ));
   return (
     <Fragment>
@@ -26,13 +28,13 @@ const ShowEducation = ({ experience }) => {
       <table className="table">
         <thead>
           <tr>
-            <th>Company</th>
-            <th>Tittle</th>
+            <th>School</th>
+            <th>Degree</th>
             <th>Duration</th>
             <th />
           </tr>
         </thead>
-        <tbody>{experiences}</tbody>
+        <tbody>{educations}</tbody>
       </table>
     </Fragment>
   );
