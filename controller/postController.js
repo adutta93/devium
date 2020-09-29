@@ -196,6 +196,7 @@ exports.postComment = async (req, res) => {
   }
 };
 
+//DELETE COMMENT
 exports.deleteComment = async (req, res) => {
   try {
     const post = await Posts.findById(req.params.id);

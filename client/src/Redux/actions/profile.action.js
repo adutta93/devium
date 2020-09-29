@@ -1,5 +1,11 @@
 import axios from "axios";
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "../actionTypes";
+import {
+  CLEAR_PROFILE,
+  GET_PROFILE,
+  PROFILE_ERROR,
+  UPDATE_PROFILE,
+  ACCOUNT_DELETED,
+} from "../actionTypes";
 import { setAlert } from "./alert.action";
 import Swal from "sweetalert2";
 
@@ -131,5 +137,90 @@ export const addEducation = (formData, history) => async (dispatch) => {
         status: error.response.status,
       },
     });
+  }
+};
+
+//delete experience
+export const deleteExperience = (id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`/api/profile/user/experience/${id}`);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: response.data,
+    });
+
+    dispatch(setAlert("Profile deleted", "success"));
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//delete education
+export const deleteEducation = (id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`/api/profile/user/education/${id}`);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//delete account and profile
+export const deleteAccount = () => async (dispatch) => {
+  if (window.confirm("Are you sure ? This can NOT be undone!")) {
+    try {
+      const response = await axios.delete(`/api/profile/user/`);
+      dispatch({
+        type: CLEAR_PROFILE,
+      });
+      dispatch({
+        type: ACCOUNT_DELETED,
+      });
+
+      dispatch(
+        Swal.fire({
+          position: "center",
+          icon: "Success",
+          title: "Success",
+          showConfirmButton: false,
+          timer: 3000,
+          text: "Profile Deleted",
+        })
+      );
+    } catch (error) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {
+          msg: error.response.statusText,
+          status: error.response.status,
+        },
+      });
+
+      dispatch(
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "error",
+          showConfirmButton: false,
+          timer: 3000,
+          text: "Error deleting profile",
+        })
+      );
+    }
   }
 };

@@ -4,7 +4,10 @@ import moment from "moment";
 import Button from "../Button";
 import "./index.css";
 
-const ShowEducation = ({ education }) => {
+import { connect } from "react-redux";
+import { deleteEducation } from "../../Redux/actions/profile.action";
+
+const ShowEducation = ({ education, deleteEducation }) => {
   console.log("From ShowEducation ==> ", education);
   const educations = education.map((edu) => (
     <tr key={edu._id}>
@@ -23,6 +26,7 @@ const ShowEducation = ({ education }) => {
           className="showEdu-btn showEdu-hide-sm"
           value="Delete"
           deleteBtn
+          onClick={() => deleteEducation(edu._id)}
         />
       </td>
     </tr>
@@ -47,4 +51,4 @@ const ShowEducation = ({ education }) => {
   );
 };
 
-export default ShowEducation;
+export default connect(null, { deleteEducation })(ShowEducation);

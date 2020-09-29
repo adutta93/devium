@@ -4,7 +4,10 @@ import moment from "moment";
 import Button from "../Button";
 import "./index.css";
 
-const ShowExperience = ({ experience }) => {
+import { connect } from "react-redux";
+import { deleteExperience } from "../../Redux/actions/profile.action";
+
+const ShowExperience = ({ experience, deleteExperience }) => {
   console.log(experience);
   const experiences = experience.map((exp) => (
     <tr key={exp._id}>
@@ -23,6 +26,7 @@ const ShowExperience = ({ experience }) => {
           className="showExp-btn showExp-hide-sm"
           value="Delete"
           deleteBtn
+          onClick={() => deleteExperience(exp._id)}
         />
       </td>
     </tr>
@@ -47,4 +51,4 @@ const ShowExperience = ({ experience }) => {
   );
 };
 
-export default ShowExperience;
+export default connect(null, { deleteExperience })(ShowExperience);
