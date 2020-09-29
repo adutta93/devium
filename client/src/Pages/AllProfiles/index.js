@@ -24,16 +24,18 @@ const AllProfiles = ({ getAllProfiles, profiles, loading }) => {
             <h1 className="ap-large">Developer connections</h1>
             <p className="ap-lead">Browse and connect with developers</p>
           </div>
-          <div className="profile">
-            {profiles.length > 0 ? (
-              <Fragment>
-                {profiles.profiles.map((profile) => (
-                  <ProfileItem key={profile._id} profile={profile} />
-                ))}
-              </Fragment>
-            ) : (
-              <h4>No profile found...!!!</h4>
-            )}
+          <div>
+            <div className="ap-profile">
+              {profiles.length > 0 ? (
+                <Fragment>
+                  {profiles.profiles.map((profile) => (
+                    <ProfileItem key={profile._id} profile={profile} />
+                  ))}
+                </Fragment>
+              ) : (
+                <h4>No profile found...!!!</h4>
+              )}
+            </div>
           </div>
         </Fragment>
       )}

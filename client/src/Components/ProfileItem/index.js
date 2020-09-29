@@ -17,16 +17,12 @@ const ProgileItem = ({
       <img src={avatar} className="p-round-img" />
       <div className="p-details">
         <h2>{name}</h2>
-        <p>
+        <p className="p-my-1">
           {status}
-          {company && <span> at {company.slice(0, 5)}...</span>}
+          {company && <span> at {company}</span>}
         </p>
+        <p className="p-my-1">{location && <span>{location}</span>}</p>
       </div>
-      <span>
-        {/*{skills.slice(0, 6).map((skill, index) => (
-          <span key={index}>{skill} || </span>
-       ))}*/}
-      </span>
 
       <div className="p-btn">
         <Link to={`/profile/${_id}`}>

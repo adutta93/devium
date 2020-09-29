@@ -130,6 +130,7 @@ const AddEducation = ({ addEducation, history }) => {
         </div>
         <div className="edu-submit-grp">
           <Button value="Submit" />
+
           <Link className="edu-go-back" to="/manageprofile">
             <Button value="Go Back" transparent />
           </Link>

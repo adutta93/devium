@@ -252,17 +252,6 @@ export const deleteAccount = () => async (dispatch) => {
           // status: error.response.status,
         },
       });
-
-      dispatch(
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "error",
-          showConfirmButton: false,
-          timer: 3000,
-          text: "Error deleting profile",
-        })
-      );
     }
   }
 };
