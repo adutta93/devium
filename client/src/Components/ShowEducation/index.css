@@ -1,31 +1,31 @@
-.showExp-my-2 {
+.showEdu-my-2 {
   margin: 2rem 0;
   font-size: 2rem;
   color: #03a87c;
 }
 
-.showExp-table-grp {
-  margin-left: 12.5rem;
+.showEdu-table-grp {
+  margin-left: 12.8rem;
   margin-top: 8rem;
 }
 
-.showExp-table th,
-.showExp-table td {
+.showEdu-table th,
+.showEdu-table td {
   padding: 1rem;
   text-align: left;
 }
 
-.showExp-table th {
+.showEdu-table th {
   background: #03a87c;
   color: white;
 }
 
 @media screen and (max-width: 960px) {
-  .showExp-table-grp {
+  .showEdu-table-grp {
     margin-left: 2rem;
     margin-top: 8rem;
   }
-  .showExp-hide-sm {
+  .showEdu-hide-sm {
     display: none;
   }
 }

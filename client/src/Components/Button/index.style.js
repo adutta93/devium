@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Btn = styled.button`
-  background: ${({ bigBtn, mediumBtn, transparent }) =>
+  background: ${({ bigBtn, mediumBtn, transparent, deleteBtn }) =>
     bigBtn
       ? "#03a87c"
       : mediumBtn
       ? "#03a87c"
       : transparent
       ? "#fff"
+      : deleteBtn
+      ? "#FF3031"
       : "#03a87c "};
   color: ${({ bigBtn, mediumBtn, transparent }) =>
     bigBtn ? "#fff" : mediumBtn ? "#fff" : transparent ? "#03a87c" : "#fff "};
@@ -33,7 +35,7 @@ export const Btn = styled.button`
   &:hover {
     border: 2px solid white;
     color: #fff;
-    background: #00c792;
+    background: ${({ deleteBtn }) => (deleteBtn ? "#E44236" : "#00c792")};
     /* transition: all 0.3s ease-out; */
   }
 

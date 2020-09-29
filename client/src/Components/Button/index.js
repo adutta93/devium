@@ -7,6 +7,7 @@ const Button = ({
   isTransparent,
   isLarge,
   isSmall,
+  isDeleteBtn,
   ...otherProps
 }) => {
   return (
@@ -20,6 +21,8 @@ const Button = ({
           ? "smallMargin"
           : isTransparent
           ? "transparent"
+          : isDeleteBtn
+          ? "deleteBtn"
           : " "
       } btn`}
       {...otherProps}
