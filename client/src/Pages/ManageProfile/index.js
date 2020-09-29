@@ -1,7 +1,10 @@
 import React, { useEffect, Fragment } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
-import { getUserProfile } from "../../Redux/actions/profile.action";
+import {
+  getUserProfile,
+  deleteAccount,
+} from "../../Redux/actions/profile.action";
 import { connect } from "react-redux";
 import { AiOutlineUser } from "react-icons/ai";
 
@@ -15,6 +18,7 @@ import ShowExperience from "../../Components/ShowExperience";
 
 const ManageProfile = ({
   getUserProfile,
+  deleteAccount,
   auth: { user },
   profile,
   loading,
@@ -50,6 +54,13 @@ const ManageProfile = ({
                 profile.userProfile ? profile.userProfile.education : []
               }
             />
+            <div className="delBtn-my-2">
+              <Button
+                deleteBtn
+                value="Delete Acount"
+                onClick={() => deleteAccount()}
+              ></Button>
+            </div>
           </Fragment>
         ) : (
           <div className="create-profile">
@@ -72,4 +83,6 @@ const mapStateToProps = (state) => ({
   loading: state.profile.loading,
 });
 
-export default connect(mapStateToProps, { getUserProfile })(ManageProfile);
+export default connect(mapStateToProps, { getUserProfile, deleteAccount })(
+  ManageProfile
+);

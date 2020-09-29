@@ -34,6 +34,10 @@ h4 {
   margin-top: 1rem;
 }
 
+.delBtn-my-2 {
+  margin-left: 12.8rem;
+  margin-top: 6rem;
+}
 .free-space {
   margin-bottom: 17rem;
 }
@@ -65,5 +69,11 @@ h4 {
   .create-profile Button {
     margin-top: 1rem;
     width: 95%;
+  }
+
+  .delBtn-my-2 {
+    margin-left: 2.3rem;
+    width: 79%;
+    margin-top: 6rem;
   }
 }
