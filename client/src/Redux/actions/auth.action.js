@@ -10,17 +10,6 @@ import {
   CLEAR_PROFILE,
 } from "../actionTypes";
 import setAuthToken from "../utils/setAuthToken";
-import Swal from "sweetalert2";
-
-// error objects
-const error = {
-  position: "center",
-  icon: "error",
-  title: "Error",
-  showConfirmButton: false,
-  timer: 3000,
-  text: "User already exists",
-};
 
 //load user
 export const loadUser = () => async (dispatch) => {

@@ -14,7 +14,7 @@ const ProgileItem = ({
 }) => {
   return (
     <div className="p-profile">
-      <img src={avatar} className="p-round-img" />
+      <img src={avatar} className="p-round-img" alt="" />
       <div className="p-details">
         <h2>{name}</h2>
         <p className="p-my-1">

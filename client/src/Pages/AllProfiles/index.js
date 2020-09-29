@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import "./index.css";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getAllProfiles } from "../../Redux/actions/profile.action";
 import ProfileItem from "../../Components/ProfileItem";
@@ -11,7 +10,7 @@ import Footer from "../../Components/Footer";
 const AllProfiles = ({ getAllProfiles, profiles, loading }) => {
   useEffect(() => {
     getAllProfiles();
-  }, []);
+  }, [getAllProfiles]);
   console.log("Yaaayyyyy", profiles);
   return (
     <Fragment>

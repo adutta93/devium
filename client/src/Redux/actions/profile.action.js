@@ -226,24 +226,13 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure ? This can NOT be undone!")) {
     try {
-      const response = await axios.delete(`/api/profile/user/`);
+      await axios.delete(`/api/profile/user/`);
       dispatch({
         type: CLEAR_PROFILE,
       });
       dispatch({
         type: ACCOUNT_DELETED,
       });
-
-      dispatch(
-        Swal.fire({
-          position: "center",
-          icon: "Success",
-          title: "Success",
-          showConfirmButton: false,
-          timer: 3000,
-          text: "Profile Deleted",
-        })
-      );
     } catch (error) {
       dispatch({
         type: PROFILE_ERROR,
