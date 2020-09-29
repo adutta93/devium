@@ -12,6 +12,7 @@ const CreateProfile = lazy(() => import("../Pages/CreateProfile"));
 const EditProfile = lazy(() => import(".././Components/EditProfileForm"));
 const AddExperirnce = lazy(() => import(".././Components/AddExperience"));
 const AddEducation = lazy(() => import(".././Components/AddEducation"));
+const AllProfiles = lazy(() => import("../Pages/AllProfiles"));
 
 const AppRouter = () => {
   return (
@@ -27,6 +28,7 @@ const AppRouter = () => {
         <PrivateRoute exact path="/edit-profile" component={EditProfile} />
         <PrivateRoute exact path="/add-experirnce" component={AddExperirnce} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
+        <PrivateRoute exact path="/developers" component={AllProfiles} />
       </Switch>
       {/*<Footer />*/}
     </div>

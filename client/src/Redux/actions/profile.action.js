@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   CLEAR_PROFILE,
   GET_PROFILE,
+  GET_ALL_PROFILES,
   PROFILE_ERROR,
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
@@ -13,6 +14,47 @@ import Swal from "sweetalert2";
 export const getUserProfile = () => async (dispatch) => {
   try {
     const response = await axios.get("/api/profile/me");
+    dispatch({
+      type: GET_PROFILE,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//get all profiles
+export const getAllProfiles = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_PROFILE,
+  });
+  try {
+    const response = await axios.get("/api/profile/");
+    dispatch({
+      type: GET_ALL_PROFILES,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        // msg: error.response.statusText,
+        // status: error.response.status,
+      },
+    });
+  }
+};
+
+//get profile by id
+export const getProfileById = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/profile/user/${userId}`);
     dispatch({
       type: GET_PROFILE,
       payload: response.data,

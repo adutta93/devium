@@ -1,0 +1,31 @@
+/* .p-my-1 {
+  margin-top: 0.2rem;
+} */
+.p-details {
+  margin-left: -4rem;
+}
+.p-profile {
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 2rem;
+  padding: 1rem;
+  line-height: 1.8;
+  margin-left: 13.5%;
+  margin-bottom: 1rem;
+  box-shadow: 2px 1.5px 5px 3px grey;
+  cursor: pointer;
+}
+
+.p-round-img {
+  border-radius: 50%;
+  height: 5rem;
+}
+
+.p-btn {
+  display: grid;
+}
+.p-btn-s {
+  margin-top: 0.3rem;
+}
