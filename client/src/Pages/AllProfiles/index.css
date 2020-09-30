@@ -21,6 +21,9 @@
   margin-bottom: 4rem;
 }
 
+.ap-app-body {
+  margin-left: 12.8rem;
+}
 @media screen and (max-width: 960px) {
   .ap-large {
     font-size: 2rem;

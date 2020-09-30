@@ -2,6 +2,9 @@ h1 {
   color: #03a87c;
 }
 
+.manage-main-body {
+  margin-left: 8rem;
+}
 .large {
   font-size: 3rem;
   line-height: 1.2;
@@ -76,4 +79,11 @@ h4 {
     width: 79%;
     margin-top: 6rem;
   }
+
+  .manage-main-body {
+    margin-left: -0.2rem;
+  }
+  /* .mp-info {
+    margin-left: -3rem;
+  } */
 }
