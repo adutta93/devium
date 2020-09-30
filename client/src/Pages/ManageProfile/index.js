@@ -29,7 +29,7 @@ const ManageProfile = ({
   }, [getUserProfile]);
 
   if (profile && profile.userProfile)
-    console.log("Dataaaaaaaa =====>", profile.userProfile);
+    console.log("Dataaaaaaaa =====>", profile);
   return profile === null && loading ? (
     <Loader />
   ) : (

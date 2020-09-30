@@ -6,7 +6,6 @@ import { SidebarData } from "../SidebarData";
 import "./index.css";
 import { connect } from "react-redux";
 import { logout } from "../../Redux/actions/auth.action";
-import { IconContext } from "react-icons";
 
 const Navbar = ({ logout }) => {
   const [sidebar, setSidebar] = useState(false);

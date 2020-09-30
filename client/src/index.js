@@ -10,12 +10,26 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <GlobalStyle>
-          <App />
-        </GlobalStyle>
+        <GlobalStyle />
         <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+// In case above one dose not work use below one
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Provider store={store}>
+//       <BrowserRouter>
+//         <GlobalStyle>
+//           <App />
+//         </GlobalStyle>
+//         <App />
+//       </BrowserRouter>
+//     </Provider>
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );

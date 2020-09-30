@@ -8,7 +8,6 @@ import {
   ACCOUNT_DELETED,
 } from "../actionTypes";
 import { setAlert } from "./alert.action";
-import Swal from "sweetalert2";
 
 //get current profile
 export const getUserProfile = () => async (dispatch) => {

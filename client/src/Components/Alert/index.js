@@ -11,7 +11,7 @@ const Alert = ({ alerts }) =>
       className={`alert modalDialog alert-${alert.alertType} `}
     >
       <div>
-        <a href="#close" title="Close" class="close">
+        <a href="#close" title="Close" className="close">
           X
         </a>
         <h2>Modal</h2>

@@ -67,7 +67,7 @@ const Footer = () => {
       </FooterLinksContainer>
       <SocialMedia>
         <SocialMediaWrap>
-          <SocialLogo>
+          <SocialLogo to="/">
             <SocialIcon />
             Devium
           </SocialLogo>

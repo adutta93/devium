@@ -25,7 +25,7 @@ const ProgileItem = ({
       </div>
 
       <div className="p-btn">
-        <Link to={`/profile/${_id}`}>
+        <Link to={`/userprofile/${_id}`}>
           <Button className="p-btn-s" value="Profile" />
         </Link>
       </div>
