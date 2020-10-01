@@ -24,12 +24,12 @@ export const SidebarData = [
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
-  // {
-  //   title: "Add Experience",
-  //   path: "/add-experirnce",
-  //   icon: <IoIcons.IoIosPaper />,
-  //   cName: "nav-text",
-  // },
+  {
+    title: "Edit Profile",
+    path: "/edit-profile",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+  },
   {
     title: "Add Experience",
     path: "/add-experirnce",
@@ -55,13 +55,6 @@ export const SidebarData = [
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },
-  {
-    title: "Support",
-    path: "/support",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text",
-  },
-
   {
     title: "Logout",
     path: "/messages",

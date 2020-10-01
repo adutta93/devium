@@ -1,9 +1,7 @@
 const express = require("express");
-const morgan = require("morgan");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
-const bodyParser = require("body-parser");
+
 // dotenv.config({ path: "./.env" });
 require("dotenv").config();
 
