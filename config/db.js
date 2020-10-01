@@ -14,7 +14,7 @@ const connectDB = async () => {
 
     console.log("MongoDB Atlas connected.....!!!");
   } catch (error) {
-    console.log("Error connecting MongoDB Atlas.....!!!");
+    console.log(error);
     // exit process with fail
     process.exit(1);
   }

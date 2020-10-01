@@ -1,12 +1,26 @@
 .container {
-  width: 85%;
+  width: 100%;
   margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
 .grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   grid-template-columns: 25% 25% 25%;
+}
+
+@media only screen and (max-width: 900px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-row-gap: 50px;
+  }
+  .container {
+    margin-top: 5rem;
+    margin-left: 5rem;
+  }
 }

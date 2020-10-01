@@ -9,25 +9,25 @@ function Pricing() {
       <div className="container">
         <div className="grid">
           <PriceCard
-            plan={"basic"}
-            price={"INR 100"}
+            plan={"Basic"}
+            price={"100"}
             utilityOne={"100 posts / Day"}
             utilityTwo={"Unlimited post search"}
             utilityThree={"1 premium course/ month"}
           />
           <PriceCard
-            plan={"basic"}
-            price={"INR 100"}
-            utilityOne={"100 posts / Day"}
+            plan={"Premium"}
+            price={"500"}
+            utilityOne={"1000 posts / Day"}
             utilityTwo={"Unlimited post search"}
-            utilityThree={"1 premium course/ month"}
+            utilityThree={"2 premium course/ month"}
           />
           <PriceCard
-            plan={"basic"}
-            price={"INR 100"}
-            utilityOne={"100 posts / Day"}
+            plan={"Ultimate"}
+            price={"1000"}
+            utilityOne={"Unlimited posts / Day"}
             utilityTwo={"Unlimited post search"}
-            utilityThree={"1 premium course/ month"}
+            utilityThree={"5 premium course/ month"}
           />
         </div>
       </div>

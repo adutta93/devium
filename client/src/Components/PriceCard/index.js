@@ -6,7 +6,7 @@ const PriceCard = ({ plan, price, utilityOne, utilityTwo, utilityThree }) => {
     <div className="card">
       <h3>{plan}</h3>
       <h2>{price}</h2>
-      <h4>{price}</h4>
+      <h4>₹{price}</h4>
       <hr />
       <p>{utilityOne}</p>
       <p>{utilityTwo}</p>
