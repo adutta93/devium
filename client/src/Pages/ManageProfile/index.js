@@ -32,7 +32,7 @@ const ManageProfile = ({
   }, [getUserProfile]);
 
   if (profile) {
-    console.log("ShowUser", profile);
+    console.log("ShowUser", profile.userProfile.user);
   }
   return profile === null && loading ? (
     <Loader />
