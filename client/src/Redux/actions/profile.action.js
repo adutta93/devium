@@ -94,10 +94,10 @@ export const createProfile = (formData, history, edit = false) => async (
       history.push("/manageprofile");
     }
   } catch (error) {
-    const errors = error.response.data.error;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    }
+    // const errors = error.response.data.error;
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
 
     dispatch({
       type: PROFILE_ERROR,
@@ -214,8 +214,8 @@ export const deleteEducation = (id) => async (dispatch) => {
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }

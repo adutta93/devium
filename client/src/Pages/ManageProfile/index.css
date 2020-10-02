@@ -38,7 +38,7 @@ h4 {
 }
 
 .delBtn-my-2 {
-  margin-left: 12.8rem;
+  margin-left: 5rem;
   margin-top: 6rem;
 }
 .free-space {
@@ -58,9 +58,9 @@ h4 {
 }
 
 .mp-company {
-  /* margin-left: 33%; */
   display: flex;
   justify-content: center;
+  margin-left: -0.01rem;
 }
 
 .mp-bio {
@@ -133,5 +133,8 @@ h4 {
   }
   .mp-bio {
     margin-left: 3.5rem;
+  }
+  .edu-ex {
+    margin-left: 2rem;
   }
 }

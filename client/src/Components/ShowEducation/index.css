@@ -59,4 +59,7 @@
   .showEdu-hide-sm {
     display: none;
   }
+  .main-edu-details {
+    display: grid;
+  }
 }

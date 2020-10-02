@@ -18,6 +18,7 @@ import ShowEducation from "../../Components/ShowEducation";
 import ShowExperience from "../../Components/ShowExperience";
 import ShowSkills from "../../Components/ShowSkills";
 import ShowUser from "../../Components/ShowUser";
+import Social from "../../Components/Social";
 
 const ManageProfile = ({
   getUserProfile,
@@ -31,7 +32,7 @@ const ManageProfile = ({
   }, [getUserProfile]);
 
   if (profile) {
-    console.log("ShowUser", profile.userProfile.bio);
+    console.log("ShowUser", profile);
   }
   return profile === null && loading ? (
     <Loader />
@@ -48,6 +49,10 @@ const ManageProfile = ({
                 <ShowSkills
                   skills={profile.userProfile ? profile.userProfile.skills : []}
                 />
+                <h4 className="mp-company">
+                  {profile.userProfile.status} at {profile.userProfile.company}
+                </h4>
+                <Social social={profile.userProfile.social} />
               </div>
 
               <div className="mp-bio">

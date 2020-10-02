@@ -44,4 +44,11 @@
   .showExp-hide-sm {
     display: none;
   }
+
+  .main-exp-details {
+    display: grid;
+  }
+  .showExp-my-2 {
+    margin-left: -0.5rem;
+  }
 }
