@@ -1,0 +1,16 @@
+.user-round-img {
+  border-radius: 50%;
+  width: 6rem;
+  margin-top: -4rem;
+}
+
+.user-name {
+  margin-left: -3rem;
+  margin-top: 1rem;
+  color: #03ac78;
+}
+
+.user-top {
+  display: grid;
+  justify-content: center;
+}

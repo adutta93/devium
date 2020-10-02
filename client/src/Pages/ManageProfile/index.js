@@ -16,6 +16,8 @@ import Footer from "../../Components/Footer";
 
 import ShowEducation from "../../Components/ShowEducation";
 import ShowExperience from "../../Components/ShowExperience";
+import ShowSkills from "../../Components/ShowSkills";
+import ShowUser from "../../Components/ShowUser";
 
 const ManageProfile = ({
   getUserProfile,
@@ -28,8 +30,9 @@ const ManageProfile = ({
     getUserProfile();
   }, [getUserProfile]);
 
-  // if (profile && profile.userProfile)
-  // console.log("Dataaaaaaaa =====>", profile);
+  if (profile) {
+    console.log("ShowUser", profile);
+  }
   return profile === null && loading ? (
     <Loader />
   ) : (
@@ -39,12 +42,14 @@ const ManageProfile = ({
           <Fragment>
             <DashNav />
             <div className="mp-info">
-              <div>
-                <h1 className="large">Manage Profile</h1>
-                <p className="lead">
-                  {" "}
-                  <AiOutlineUser /> Welcome {user && user.name}
-                </p>
+              <div className="first-card">
+                <ShowUser user={user} />
+                <h4 className="mp-company">
+                  {profile.userProfile.status} at {profile.userProfile.company}
+                </h4>
+                <ShowSkills
+                  skills={profile.userProfile ? profile.userProfile.skills : []}
+                />
               </div>
               <ShowExperience
                 experience={
@@ -99,3 +104,15 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { getUserProfile, deleteAccount })(
   ManageProfile
 );
+
+{
+  /*
+  <div>
+      <p className="lead">
+          {" "}
+           <AiOutlineUser /> Welcome {user && user.name}
+      </p>
+  </div>
+
+  */
+}

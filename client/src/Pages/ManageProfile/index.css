@@ -44,6 +44,20 @@ h4 {
 .free-space {
   margin-bottom: 17rem;
 }
+
+.first-card {
+  border: 1px solid #03ac78;
+  margin-top: 5rem;
+  width: 80%;
+  margin-left: 5rem;
+  padding: 1rem 0 1rem 0;
+  border-radius: 10px;
+}
+
+.mp-company {
+  margin-left: 33%;
+}
+
 @media screen and (max-width: 960px) {
   .large {
     margin-top: 8rem;
