@@ -5,8 +5,12 @@
 }
 
 .showEdu-table-grp {
-  margin-left: 12.8rem;
-  margin-top: 8rem;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  border: 1px solid #03a87c;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 10px;
+  width: 37.25%;
 }
 
 .showEdu-table th,
@@ -15,9 +19,36 @@
   text-align: left;
 }
 
+.showEdu-btn {
+  color: red;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
 .showEdu-table th {
   background: #03a87c;
   color: white;
+}
+
+.main-edu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-edu-details {
+  display: flex;
+  justify-content: space-around;
+  line-height: 2rem;
+  font-size: 1rem;
+  margin-left: -1rem;
+}
+
+.main-edu-details p {
+  margin-right: 2rem;
+}
+
+.showEdu-table {
+  padding: 1rem;
+  text-align: left;
 }
 
 @media screen and (max-width: 960px) {

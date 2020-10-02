@@ -31,7 +31,7 @@ const ManageProfile = ({
   }, [getUserProfile]);
 
   if (profile) {
-    console.log("ShowUser", profile);
+    console.log("ShowUser", profile.userProfile.bio);
   }
   return profile === null && loading ? (
     <Loader />
@@ -44,23 +44,28 @@ const ManageProfile = ({
             <div className="mp-info">
               <div className="first-card">
                 <ShowUser user={user} />
-                <h4 className="mp-company">
-                  {profile.userProfile.status} at {profile.userProfile.company}
-                </h4>
+
                 <ShowSkills
                   skills={profile.userProfile ? profile.userProfile.skills : []}
                 />
               </div>
-              <ShowExperience
-                experience={
-                  profile.userProfile ? profile.userProfile.experience : []
-                }
-              />
-              <ShowEducation
-                education={
-                  profile.userProfile ? profile.userProfile.education : []
-                }
-              />
+
+              <div className="mp-bio">
+                <h4 className="about">About</h4>
+                <p className="details">{profile.userProfile.bio}</p>
+              </div>
+              <div className="edu-ex">
+                <ShowExperience
+                  experience={
+                    profile.userProfile ? profile.userProfile.experience : []
+                  }
+                />
+                <ShowEducation
+                  education={
+                    profile.userProfile ? profile.userProfile.education : []
+                  }
+                />
+              </div>
               <div className="delBtn-my-2">
                 <Button
                   deleteBtn
@@ -113,6 +118,11 @@ export default connect(mapStateToProps, { getUserProfile, deleteAccount })(
            <AiOutlineUser /> Welcome {user && user.name}
       </p>
   </div>
+
+
+  <h4 className="mp-company">
+                  {profile.userProfile.status} at {profile.userProfile.company}
+                </h4>
 
   */
 }

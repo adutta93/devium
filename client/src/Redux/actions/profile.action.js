@@ -21,8 +21,8 @@ export const getUserProfile = () => async (dispatch) => {
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }
@@ -62,8 +62,8 @@ export const getProfileById = (userId) => async (dispatch) => {
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }
@@ -102,8 +102,8 @@ export const createProfile = (formData, history, edit = false) => async (
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }
@@ -166,16 +166,16 @@ export const addEducation = (formData, history) => async (dispatch) => {
 
     history.push("/manageprofile");
   } catch (error) {
-    const errors = error.response.data.error;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    }
+    // const errors = error.response.data.error;
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
 
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }
@@ -195,8 +195,8 @@ export const deleteExperience = (id) => async (dispatch) => {
     dispatch({
       type: PROFILE_ERROR,
       payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
+        // msg: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }

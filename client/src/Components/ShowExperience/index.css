@@ -3,21 +3,37 @@
   font-size: 2rem;
   color: #03a87c;
 }
-
+.showExp-btn {
+  color: red;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
 .showExp-table-grp {
-  margin-left: 12.5rem;
-  margin-top: 8rem;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  border: 1px solid #03a87c;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 10px;
+  width: 37.25%;
+}
+.main-exp {
+  display: flex;
+  justify-content: space-between;
 }
 
-.showExp-table th,
-.showExp-table td {
+.main-exp-details {
+  display: flex;
+  justify-content: space-around;
+  line-height: 2rem;
+  font-size: 1rem;
+  margin-left: -1rem;
+}
+.main-exp-details p {
+  margin-right: 2rem;
+}
+.showExp-table {
   padding: 1rem;
   text-align: left;
-}
-
-.showExp-table th {
-  background: #03a87c;
-  color: white;
 }
 
 @media screen and (max-width: 960px) {

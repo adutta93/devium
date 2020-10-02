@@ -46,18 +46,45 @@ h4 {
 }
 
 .first-card {
+  display: grid;
+  justify-content: center;
   border: 1px solid #03ac78;
   margin-top: 5rem;
   width: 80%;
   margin-left: 5rem;
   padding: 1rem 0 1rem 0;
   border-radius: 10px;
+  line-height: 2.5rem;
 }
 
 .mp-company {
-  margin-left: 33%;
+  /* margin-left: 33%; */
+  display: flex;
+  justify-content: center;
 }
 
+.mp-bio {
+  border: 1px solid #03ac78;
+  margin-top: 1rem;
+  width: 80%;
+  margin-left: 5rem;
+  padding: 1rem 0 1rem 0;
+  border-radius: 10px;
+}
+
+.about,
+.details {
+  margin-left: 2rem;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+}
+
+.edu-ex {
+  display: flex;
+}
 @media screen and (max-width: 960px) {
   .large {
     margin-top: 8rem;
@@ -100,4 +127,11 @@ h4 {
   /* .mp-info {
     margin-left: -3rem;
   } */
+
+  .first-card {
+    margin-left: 3.5rem;
+  }
+  .mp-bio {
+    margin-left: 3.5rem;
+  }
 }

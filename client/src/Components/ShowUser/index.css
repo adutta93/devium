@@ -2,10 +2,11 @@
   border-radius: 50%;
   width: 6rem;
   margin-top: -4rem;
+  margin-left: 4.5rem;
 }
 
 .user-name {
-  margin-left: -3rem;
+  margin-left: 1.5rem;
   margin-top: 1rem;
   color: #03ac78;
 }
