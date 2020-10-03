@@ -13,6 +13,7 @@ const EditProfile = lazy(() => import(".././Components/EditProfileForm"));
 const AddExperirnce = lazy(() => import(".././Components/AddExperience"));
 const AddEducation = lazy(() => import(".././Components/AddEducation"));
 const AllPosts = lazy(() => import("../Pages/AllPosts"));
+const SinglePost = lazy(() => import("../Pages/SinglePost"));
 
 const AppRouter = () => {
   return (
@@ -29,6 +30,7 @@ const AppRouter = () => {
         <PrivateRoute exact path="/add-experirnce" component={AddExperirnce} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
         <PrivateRoute exact path="/posts" component={AllPosts} />
+        <PrivateRoute exact path="/posts/:id" component={SinglePost} />
       </Switch>
       {/*<Footer />*/}
     </div>
