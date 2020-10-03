@@ -72,7 +72,7 @@ const Footer = () => {
             Devium
           </SocialLogo>
           <WebsiteRights>
-            © 2020 Devium | Made with <span role="img">🧡</span> by
+            © 2020 Devium | Made by
             <a
               target="_blank"
               rel="noopener noreferrer"
