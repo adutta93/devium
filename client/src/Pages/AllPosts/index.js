@@ -3,7 +3,9 @@ import "./index.css";
 import Loader from "../../Components/Loader";
 import { connect } from "react-redux";
 import PostItem from "../../Components/PostComponents/PostItem";
-// import PostForm from './PostForm';
+import PostForm from "../../Components/PostComponents/PostForm/";
+import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
 import { getPosts } from "../../Redux/actions/post.action";
 
 const Posts = ({ getPosts, posts, loading }) => {
@@ -15,14 +17,16 @@ const Posts = ({ getPosts, posts, loading }) => {
     <Loader />
   ) : (
     <Fragment>
+      <Header />
       <h1 className="large text-primary">Posts</h1>
       <p className="lead">Welcome to the community</p>
-      {/* <PostForm />*/}
+      <PostForm />
       <div className="posts">
         {posts.posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
       </div>
+      <Footer />
     </Fragment>
   );
 };
