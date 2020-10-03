@@ -71,21 +71,38 @@ const Footer = () => {
             <SocialIcon />
             Devium
           </SocialLogo>
-          <WebsiteRights>© 2020 A Devium Corporation</WebsiteRights>
+          <WebsiteRights>
+            © 2020 Devium | Made with 🧡 by
+            <a target="_blank" href="https://github.com/akash-dutta-au7">
+              <span style={{ color: "white" }}>Akash Dutta</span>{" "}
+            </a>
+          </WebsiteRights>
           <SocialIcons>
             <SocialIconLink href="/" target="_blank" aria_label="Facebook">
               <FaFacebook />
             </SocialIconLink>
 
-            <SocialIconLink href="/" target="_blank" aria_label="Twitter">
+            <SocialIconLink
+              href="https://twitter.com/mernstackdev93"
+              target="_blank"
+              aria_label="Twitter"
+            >
               <FaTwitter />
             </SocialIconLink>
 
-            <SocialIconLink href="/" target="_blank" aria_label="Instagram">
+            <SocialIconLink
+              href="https://www.instagram.com/aaakash.js/"
+              target="_blank"
+              aria_label="Instagram"
+            >
               <FaInstagram />
             </SocialIconLink>
 
-            <SocialIconLink href="/" target="_blank" aria_label="Linkedin">
+            <SocialIconLink
+              href="https://www.linkedin.com/in/akash-dutta-0a4993173/"
+              target="_blank"
+              aria_label="Linkedin"
+            >
               <FaLinkedin />
             </SocialIconLink>
           </SocialIcons>
