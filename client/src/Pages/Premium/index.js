@@ -6,8 +6,8 @@ function Pricing() {
   return (
     <Fragment>
       <Header />
-      <div className="container">
-        <div className="grid">
+      <div className="prem-container">
+        <div className="prem-grid">
           <PriceCard
             plan={"Basic"}
             price={"100"}

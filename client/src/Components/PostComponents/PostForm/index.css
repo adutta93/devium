@@ -1,0 +1,54 @@
+.fr-post-form {
+  padding: 0.5rem;
+}
+/* .fr-form Button {
+  margin-top: 1rem;
+  justify-content: center;
+} */
+
+.fr-form .form-group {
+  margin: 1.2rem 0;
+}
+
+.fr-form .form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.fr-form textarea {
+  display: block;
+  width: 80%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  margin-left: 11.5rem;
+  border: 1px solid #ccc;
+}
+
+.fr-form input[type="submit"],
+button {
+  font: inherit;
+}
+
+.fr-btn {
+  display: inline-block;
+  background: #03ac78;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+  margin-left: 11.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .fr-form {
+    width: 100%;
+    margin-left: -10rem;
+  }
+}

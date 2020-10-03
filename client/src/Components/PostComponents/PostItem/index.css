@@ -1,23 +1,46 @@
-:root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
-  --light-color: #f4f4f4;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
-}
-
-.post {
+.pt-post {
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-gap: 2rem;
+  grid-template-columns: 1fr 6fr;
+  grid-gap: 1rem;
+  justify-content: center;
   align-items: center;
+  line-height: 1.5rem;
+  border: 1px solid grey;
+  padding: 1.5rem;
+  margin: 3rem 12rem;
+  width: 80%;
+  border-radius: 1px;
+}
+.pt-user-grp {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+.pt-user-grp h4 {
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
+.pt-post-body {
+  display: flex;
+  margin-left: 0.5rem;
 }
 
-.my-1 {
-  margin: 1rem 0;
+.pt-post-date {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-.p-1 {
+.pt-comment-section {
+  display: flex;
+  justify-content: center;
+  margin-left: -60rem;
+}
+.pt-text {
+  margin: 2rem 0;
+}
+
+.pt-p-1 {
   padding: 1rem;
 }
 
@@ -27,42 +50,31 @@
   margin-bottom: 0.5rem;
 }
 
-.round-img {
+.pt-round-img {
   border-radius: 50%;
-  width: 6rem;
+  width: 3rem;
 }
 
-.btn {
-  display: inline-block;
-  background: var(--light-color);
-  color: #333;
-  padding: 0.4rem 1.3rem;
-  font-size: 1rem;
-  border: none;
+.pt-element {
+  margin-left: 1.2rem;
+  /* margin-right: -15rem; */
   cursor: pointer;
-  margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
-  outline: none;
 }
 
-.btn-primary,
-.bg-primary,
-.badge-primary,
-.alert-primary {
-  background: var(--primary-color);
-  color: #fff;
+.pt-comment {
+  text-decoration: none;
+  padding: 0.5rem;
+  background: #03ac78;
+  border-radius: 5px;
+  color: white;
 }
-.btn-light,
-.bg-light,
-.badge-light,
-.alert-light {
-  background: var(--light-color);
-  color: #333;
-}
-.btn-danger,
-.bg-danger,
-.badge-danger,
-.alert-danger {
-  background: var(--danger-color);
-  color: #fff;
+
+@media (max-width: 768px) {
+  .pt-post {
+    width: 90%;
+    margin-left: 2rem;
+  }
+  .pt-comment-section {
+    margin-left: -12rem;
+  }
 }

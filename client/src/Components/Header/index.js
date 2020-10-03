@@ -34,11 +34,11 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
         </NavItem>
 
         <NavItem>
-          <NavLinks to="/userprofile">Profile</NavLinks>
+          <NavLinks to="/manageprofile">Profile</NavLinks>
         </NavItem>
 
         <NavItem>
-          <NavLinks to="/developers">Developers</NavLinks>
+          <NavLinks to="https://github.com/akash-dutta-au7">GitHub</NavLinks>
         </NavItem>
 
         <NavItem>
@@ -67,7 +67,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
         </NavItem>
 
         <NavItem>
-          <NavLinks to="/blog">Blog</NavLinks>
+          <NavLinks to="/blog">GitHub</NavLinks>
         </NavItem>
 
         <NavItem>

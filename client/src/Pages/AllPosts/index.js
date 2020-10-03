@@ -12,14 +12,14 @@ const Posts = ({ getPosts, posts, loading }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  console.log("All posts", posts.posts);
+
   return loading ? (
     <Loader />
   ) : (
     <Fragment>
       <Header />
-      <h1 className="large text-primary">Posts</h1>
-      <p className="lead">Welcome to the community</p>
+      <h1 className="all-large">Posts</h1>
+      <p className="all-lead">Welcome to the community</p>
       <PostForm />
       <div className="posts">
         {posts.posts.map((post) => (

@@ -31,9 +31,6 @@ const ManageProfile = ({
     getUserProfile();
   }, [getUserProfile]);
 
-  if (profile) {
-    console.log("ShowUser", profile.userProfile.user);
-  }
   return profile === null && loading ? (
     <Loader />
   ) : (
@@ -114,20 +111,3 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { getUserProfile, deleteAccount })(
   ManageProfile
 );
-
-{
-  /*
-  <div>
-      <p className="lead">
-          {" "}
-           <AiOutlineUser /> Welcome {user && user.name}
-      </p>
-  </div>
-
-
-  <h4 className="mp-company">
-                  {profile.userProfile.status} at {profile.userProfile.company}
-                </h4>
-
-  */
-}

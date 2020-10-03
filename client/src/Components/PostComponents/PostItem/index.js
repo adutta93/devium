@@ -19,33 +19,38 @@ const PostItem = ({
   showActions,
 }) => {
   return (
-    <div className="post bg-white p-1 my-1">
+    <div className="pt-post">
       <div>
         <Link to={`/userprofile/${user}`}>
-          <img className="round-img" src={avatar} alt="" />
-          <h4>{name}</h4>
+          <div className="pt-user-grp">
+            <img className="pt-round-img" src={avatar} alt="" />
+            <h4>{name}</h4>
+          </div>
         </Link>
       </div>
       <div>
-        <p className="my-1">{text}</p>
-        <p className="post-date">
+        <p className="pt-text">{text}</p>
+        <p className="pt-post-date">
           Posted on <Moment format="DD/MM/YYYY">{date}</Moment>
         </p>
 
         {showActions && (
           <Fragment>
-            <AiOutlineCheck color={"green"} onClick={() => addLike(_id)} />{" "}
-            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-            <AiOutlineClose onClick={() => removeLike(_id)} />
-            <Link to={`/posts/${_id}`} className="btn btn-primary">
-              Comments{" "}
-              {comments.length > 0 && (
-                <span className="comment-count">{comments.length}</span>
-              )}
-            </Link>
-            {!auth.loading && user === auth.user._id && (
-              <AiFillDelete onClick={() => deletePost(_id)} color={"red"} />
-            )}
+            <div className="pt-comment-section">
+              <div className="pt-element">
+                <AiOutlineCheck color={"green"} onClick={() => addLike(_id)} />{" "}
+                <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+              </div>
+              <div className="pt-element">
+                <AiOutlineClose onClick={() => removeLike(_id)} />
+              </div>
+
+              <div className="pt-element">
+                {!auth.loading && user === auth.user._id && (
+                  <AiFillDelete onClick={() => deletePost(_id)} color={"red"} />
+                )}
+              </div>
+            </div>
           </Fragment>
         )}
       </div>

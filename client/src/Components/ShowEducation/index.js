@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import Moment from "react-moment";
 import moment from "moment";
-import Button from "../Button";
 import "./index.css";
 import { AiFillDelete } from "react-icons/ai";
 import { connect } from "react-redux";
