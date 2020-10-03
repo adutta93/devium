@@ -4,11 +4,13 @@ import Moment from "react-moment";
 import { connect } from "react-redux";
 import "./index.css";
 import { AiOutlineCheck, AiOutlineClose, AiFillDelete } from "react-icons/ai";
-// import { addLike, removeLike, deletePost } from "../../actions/post";
+import { addLike, removeLike } from "../../../Redux/actions/post.action";
 
 const PostItem = ({
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
+  addLike,
+  removeLike,
   showActions,
 }) => {
   return (
@@ -27,13 +29,9 @@ const PostItem = ({
 
         {showActions && (
           <Fragment>
-            <AiOutlineCheck
-              color={"green"}
-              // onClick={() => addLike(_id)}
-            />{" "}
+            <AiOutlineCheck color={"green"} onClick={() => addLike(_id)} />{" "}
             <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-            <AiOutlineClose // onClick={() => removeLike(_id)}
-            />
+            <AiOutlineClose onClick={() => removeLike(_id)} />
             <Link to={`/posts/${_id}`} className="btn btn-primary">
               Comments{" "}
               {comments.length > 0 && (
@@ -60,4 +58,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, {})(PostItem);
+export default connect(mapStateToProps, { addLike, removeLike })(PostItem);
