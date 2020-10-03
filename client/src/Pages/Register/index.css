@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&display=swap");
 
-.body {
+.reg-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@
   background: rgba(6, 215, 152, 1);
 }
 
-.container {
+.reg-container {
   font-family: "Noto Serif JP", serif;
   display: flex;
   flex-direction: column;
@@ -26,12 +26,12 @@
   box-shadow: 10px 10px 68px -6px rgba(0, 0, 0, 0.5);
 }
 
-.items {
+.reg-items {
   display: flex;
   flex-direction: column;
 }
 
-.items input {
+.reg-items input {
   margin-bottom: 30px;
   padding: 2px 0px;
   padding-bottom: 5px;
@@ -46,40 +46,12 @@
   opacity: 0.55;
 }
 
-.title {
+.reg-title {
   margin-bottom: 50px;
   letter-spacing: 15px;
   text-align: center;
   opacity: 0.5;
 }
-
-#button {
-  padding: 0.9rem 6rem;
-  margin-top: 30px;
-  outline: none;
-  border: none;
-  font-size: medium;
-  font-weight: 600;
-  letter-spacing: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  background: linear-gradient(
-    90deg,
-    /* rgba(2, 0, 36, 1) 0%, */ rgba(6, 215, 152, 1) 0%,
-    rgba(32, 204, 158, 1) 30%,
-    /* rgba(135, 219, 213, 1) 70% */
-  );
-  color: grey;
-}
-
-#button:active {
-  transform: translateY(2px);
-}
-
-#button text {
-  opacity: 0.5;
-}
-
 #sign {
   margin-top: 4em;
   text-align: center;
@@ -100,15 +72,21 @@
   letter-spacing: 2px;
 }
 
-.footer-text {
+.reg-footer-text {
   color: #585858;
   margin-top: 1rem;
   margin-left: -1rem;
 }
 
-.footer {
+.reg-footer {
   display: flex;
   justify-content: center;
   text-decoration: none;
   color: rgba(6, 215, 152, 1);
+}
+
+@media screen and (max-width: 960px) {
+  .reg-items input {
+    margin-left: 2rem;
+  }
 }

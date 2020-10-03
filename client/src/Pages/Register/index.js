@@ -55,12 +55,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   //   Swal.fire(errorAcount);
   // }
   return (
-    <div className="body">
-      <div className="container">
+    <div className="reg-body">
+      <div className="reg-container">
         <Alert />
-        <h1 className="title">Register</h1>
+        <h1 className="reg-title">Register</h1>
         <form onSubmit={(e) => alert(e)}>
-          <div className="items">
+          <div className="reg-items">
             <input
               type="text"
               name="name"
@@ -108,9 +108,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
           <Button bigBtn value="Sign Up" />
         </form>
-        <span className="footer-text">
+        <span className="reg-footer-text">
           Already have an acount ?{" "}
-          <Link className="footer" to="/signin">
+          <Link className="reg-footer" to="/signin">
             Sign In
           </Link>
         </span>

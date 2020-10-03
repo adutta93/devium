@@ -44,11 +44,11 @@ const SignIn = ({ login, isAuthenticated, user }) => {
   }
 
   return (
-    <div className="body">
-      <div className="container">
-        <h1 className="title">Login</h1>
+    <div className="log-body">
+      <div className="log-container">
+        <h1 className="log-title">Login</h1>
         <form onSubmit={(e) => alert(e)}>
-          <div className="items">
+          <div className="log-items">
             <input
               type="email"
               name="email"
@@ -67,15 +67,15 @@ const SignIn = ({ login, isAuthenticated, user }) => {
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
-              className="form-input"
+              className="log-form-input"
               placeholder="Password"
             />
           </div>
           <Button bigBtn value="Sign In" />
         </form>
-        <span className="footer-text">
+        <span className="log-footer-text">
           Don't have an acount ?{" "}
-          <Link className="footer" to="/register">
+          <Link className="log-footer" to="/register">
             Sign Up
           </Link>
         </span>
