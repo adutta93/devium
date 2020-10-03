@@ -72,8 +72,13 @@ const Footer = () => {
             Devium
           </SocialLogo>
           <WebsiteRights>
-            © 2020 Devium | Made with 🧡 by
-            <a target="_blank" href="https://github.com/akash-dutta-au7">
+            © 2020 Devium | Made with <span role="img">🧡</span> by
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/akash-dutta-au7"
+              aria_label="GitHub"
+            >
               <span style={{ color: "white" }}>Akash Dutta</span>{" "}
             </a>
           </WebsiteRights>
@@ -86,6 +91,7 @@ const Footer = () => {
               href="https://twitter.com/mernstackdev93"
               target="_blank"
               aria_label="Twitter"
+              rel="noopener noreferrer"
             >
               <FaTwitter />
             </SocialIconLink>
@@ -94,6 +100,7 @@ const Footer = () => {
               href="https://www.instagram.com/aaakash.js/"
               target="_blank"
               aria_label="Instagram"
+              rel="noopener noreferrer"
             >
               <FaInstagram />
             </SocialIconLink>
@@ -102,6 +109,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/akash-dutta-0a4993173/"
               target="_blank"
               aria_label="Linkedin"
+              rel="noopener noreferrer"
             >
               <FaLinkedin />
             </SocialIconLink>
