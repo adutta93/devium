@@ -182,7 +182,7 @@ export const addEducation = (formData, history) => async (dispatch) => {
 };
 
 //delete experience
-export const deleteExperience = (id) => async (dispatch) => {
+export const deleteExperience = (id, history) => async (dispatch) => {
   try {
     const response = await axios.delete(`/api/profile/user/experience/${id}`);
     dispatch({
@@ -191,6 +191,8 @@ export const deleteExperience = (id) => async (dispatch) => {
     });
 
     dispatch(setAlert("Profile deleted", "success"));
+
+    history.push("/manageprofile");
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,

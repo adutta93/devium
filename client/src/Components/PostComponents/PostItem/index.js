@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import "./index.css";
@@ -12,12 +13,13 @@ import {
 
 const PostItem = ({
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id, text, name, avatar, user, likes, date },
   addLike,
   removeLike,
   deletePost,
   showActions,
 }) => {
+  const history = useHistory();
   return (
     <div className="pt-post">
       <div>
@@ -38,16 +40,24 @@ const PostItem = ({
           <Fragment>
             <div className="pt-comment-section">
               <div className="pt-element">
-                <AiFillCaretUp color={"green"} onClick={() => addLike(_id)} />{" "}
+                <AiFillCaretUp
+                  color={"green"}
+                  onClick={() => (addLike(_id) ? history.go(0) : null)}
+                />{" "}
                 <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
               </div>
               <div className="pt-element">
-                <AiFillCaretDown onClick={() => removeLike(_id)} />
+                <AiFillCaretDown
+                  onClick={() => (removeLike(_id) ? history.go(0) : null)}
+                />
               </div>
 
               <div className="pt-element">
                 {!auth.loading && user === auth.user._id && (
-                  <AiFillDelete onClick={() => deletePost(_id)} color={"red"} />
+                  <AiFillDelete
+                    onClick={() => (deletePost(_id) ? history.go(0) : null)}
+                    color={"red"}
+                  />
                 )}
               </div>
             </div>

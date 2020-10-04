@@ -40,7 +40,12 @@ const Footer = () => {
         <FooterLinksWrapper>
           <FooterLinkItems>
             <FooterLink>
-              <Link to="/register">Get Started</Link>
+              <Link
+                to="/register"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Get Started
+              </Link>
             </FooterLink>
             <FooterLink>Testimonials</FooterLink>
           </FooterLinkItems>
@@ -54,7 +59,12 @@ const Footer = () => {
           <FooterLinkItems>
             <FooterLink>
               {" "}
-              <Link to="/signin">Sign In</Link>
+              <Link
+                to="/signin"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Sign In
+              </Link>
             </FooterLink>
             <FooterLink>Investors</FooterLink>
           </FooterLinkItems>
@@ -79,7 +89,7 @@ const Footer = () => {
               href="https://github.com/akash-dutta-au7"
               aria_label="GitHub"
             >
-              <span style={{ color: "white" }}>Akash Dutta</span>{" "}
+              <span style={{ color: "white" }}> Akash Dutta</span>{" "}
             </a>
           </WebsiteRights>
           <SocialIcons>

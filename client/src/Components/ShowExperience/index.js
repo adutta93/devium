@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 import Moment from "react-moment";
 import moment from "moment";
 import "./index.css";
@@ -8,6 +9,7 @@ import { connect } from "react-redux";
 import { deleteExperience } from "../../Redux/actions/profile.action";
 
 const ShowExperience = ({ experience, deleteExperience }) => {
+  const history = useHistory();
   const experiences = experience.map((exp) => (
     <div className="main-exp" key={exp._id}>
       <div className="main-exp-details">
@@ -25,7 +27,7 @@ const ShowExperience = ({ experience, deleteExperience }) => {
       <div>
         <AiFillDelete
           className="showExp-btn showExp-hide-sm"
-          onClick={() => deleteExperience(exp._id)}
+          onClick={() => (deleteExperience(exp._id) ? history.go(0) : null)}
         />
       </div>
     </div>

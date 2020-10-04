@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
+// import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { addPost } from "../../../Redux/actions/post.action";
 

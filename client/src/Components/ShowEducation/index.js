@@ -2,11 +2,13 @@ import React, { Fragment } from "react";
 import Moment from "react-moment";
 import moment from "moment";
 import "./index.css";
+import { useHistory } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import { connect } from "react-redux";
 import { deleteEducation } from "../../Redux/actions/profile.action";
 
 const ShowEducation = ({ education, deleteEducation }) => {
+  const history = useHistory();
   const educations = education.map((edu) => (
     <div className="main-edu" key={edu._id}>
       <div className="main-edu-details">
@@ -24,7 +26,7 @@ const ShowEducation = ({ education, deleteEducation }) => {
       <div>
         <AiFillDelete
           className="showEdu-btn showEdu-hide-sm"
-          onClick={() => deleteEducation(edu._id)}
+          onClick={() => (deleteEducation(edu._id) ? history.go(0) : null)}
         />
       </div>
     </div>

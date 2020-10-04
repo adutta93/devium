@@ -28,6 +28,7 @@ app.use("/api/users", require("./routes/userRoute"));
 app.use("/api/auth", require("./routes/authRoute"));
 app.use("/api/posts", require("./routes/postRoute"));
 app.use("/api/profile", require("./routes/profileRoute"));
+// app.use("/api", require("./routes/paymentRoute"));
 
 //production build
 if (process.env.NODE_ENV === "production") {
@@ -40,7 +41,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
+const server_host = "0.0.0.0";
+app.listen(port, server_host, () => {
   console.log(`App is running at port ${port}`);
 });

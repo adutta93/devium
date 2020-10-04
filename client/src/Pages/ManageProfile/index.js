@@ -31,9 +31,9 @@ const ManageProfile = ({
     getUserProfile();
   }, [getUserProfile]);
 
-  if (profile) {
-    console.log("Social", profile.userProfile.social);
-  }
+  // if (profile) {
+  //   console.log("Social", profile.userProfile.social);
+  // }
   return profile === null && loading ? (
     <Loader />
   ) : (
@@ -50,18 +50,19 @@ const ManageProfile = ({
                   skills={profile.userProfile ? profile.userProfile.skills : []}
                 />
                 <h4 className="mp-company">
-                  {profile.userProfile.status} at {profile.userProfile.company}
+                  {profile.userProfile ? profile.userProfile.status : null} at{" "}
+                  {profile.userProfile ? profile.userProfile.company : null}
                 </h4>
                 <Social
-                  social={
-                    profile.userProfile.social ? profile.userProfile.social : {}
-                  }
+                  social={profile.userProfile ? profile.userProfile.social : {}}
                 />
               </div>
 
               <div className="mp-bio">
                 <h4 className="about">About</h4>
-                <p className="details">{profile.userProfile.bio}</p>
+                <p className="details">
+                  {profile.userProfile ? profile.userProfile.bio : null}
+                </p>
               </div>
               <div className="edu-ex">
                 <ShowExperience

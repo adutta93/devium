@@ -23,7 +23,7 @@ export const getPosts = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      // payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
@@ -45,20 +45,27 @@ export const addLike = (id) => async (dispatch) => {
   }
 };
 
+// const removeLikeDispatch = (id, data) => async (dispatch)  => {
+//   return dispatch({
+//     type: UPDATE_LIKES,
+//     payload: { id, likes: res.data },
+//   });
+// };
+
 // // Remove like
 export const removeLike = (id) => async (dispatch) => {
   try {
     const res = await axios.put(`/api/posts/unlikes/${id}`);
-
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data },
     });
   } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
+    console.log("Error from action", err);
+    // dispatch({
+    //   type: POST_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status },
+    // });
   }
 };
 
@@ -100,7 +107,7 @@ export const addPost = (formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      // payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
