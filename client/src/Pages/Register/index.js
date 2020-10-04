@@ -17,28 +17,46 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   });
   const { name, email, password, password2 } = formData;
 
-  const error = {
-    position: "center",
-    icon: "error",
-    title: "Error",
-    showConfirmButton: false,
-    timer: 3000,
-    text: "Password dose not match",
-  };
-
   const alert = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password || !password2) {
-      setAlert("Enter all fields", "warning");
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Warning",
+        showConfirmButton: false,
+        timer: 3000,
+        text: "Please enter all field",
+      });
     } else if (password.length < 8) {
-      setAlert("Password length should be of atleast 8 characters", "warning");
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Warning",
+        showConfirmButton: false,
+        timer: 3000,
+        text: "Password length should be of atleast 8 characters",
+      });
     } else if (password !== password2) {
-      // setAlert("Password dose not match", "danger");
-      Swal.fire(error);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error",
+        showConfirmButton: false,
+        timer: 3000,
+        text: "Password dose not match",
+      });
     } else {
       register({ name, email, password });
-      setAlert("Registration successfull", "success");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Success",
+        showConfirmButton: false,
+        timer: 3000,
+        text: "Successfully registered.!!",
+      });
       setFormData({
         name: "",
         email: "",
@@ -51,9 +69,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to="/manageprofile" />;
   }
-  // else if (token2 === null) {
-  //   Swal.fire(errorAcount);
-  // }
   return (
     <div className="reg-body">
       <div className="reg-container">

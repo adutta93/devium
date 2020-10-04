@@ -10,7 +10,7 @@ import {
   FaLinkedinIn,
   FaStackOverflow,
   FaTwitter,
-  FaYoutube,
+  FaGithub,
   FaInstagram,
 } from "react-icons/fa";
 import "./index.css";
@@ -42,7 +42,6 @@ const ProfileCreateForm = ({ createProfile, history }) => {
     location,
     status,
     skills,
-    githubusername,
     bio,
     twitter,
     facebook,
@@ -152,19 +151,6 @@ const ProfileCreateForm = ({ createProfile, history }) => {
           </small>
         </div>
         <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
-          </small>
-        </div>
-        <div className="form-group">
           <textarea
             placeholder="A short bio of yourself"
             name="bio"
@@ -224,9 +210,9 @@ const ProfileCreateForm = ({ createProfile, history }) => {
             </div>
 
             <div className="form-group social-input">
-              <FaYoutube
+              <FaGithub
                 size={30}
-                color="red"
+                color="black"
                 style={{
                   marginTop: "5px",
                   marginRight: "-10rem",
@@ -235,7 +221,7 @@ const ProfileCreateForm = ({ createProfile, history }) => {
               />
               <input
                 type="text"
-                placeholder="YouTube URL"
+                placeholder="FaGithub URL"
                 name="youtube"
                 value={youtube}
                 onChange={onChange}

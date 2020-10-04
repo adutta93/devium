@@ -31,6 +31,9 @@ const ManageProfile = ({
     getUserProfile();
   }, [getUserProfile]);
 
+  if (profile) {
+    console.log("Social", profile.userProfile.social);
+  }
   return profile === null && loading ? (
     <Loader />
   ) : (
