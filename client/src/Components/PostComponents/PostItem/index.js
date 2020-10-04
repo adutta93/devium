@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import "./index.css";
-import { AiOutlineCheck, AiOutlineClose, AiFillDelete } from "react-icons/ai";
+import { AiFillCaretUp, AiFillCaretDown, AiFillDelete } from "react-icons/ai";
 import {
   addLike,
   removeLike,
@@ -38,11 +38,11 @@ const PostItem = ({
           <Fragment>
             <div className="pt-comment-section">
               <div className="pt-element">
-                <AiOutlineCheck color={"green"} onClick={() => addLike(_id)} />{" "}
+                <AiFillCaretUp color={"green"} onClick={() => addLike(_id)} />{" "}
                 <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
               </div>
               <div className="pt-element">
-                <AiOutlineClose onClick={() => removeLike(_id)} />
+                <AiFillCaretDown onClick={() => removeLike(_id)} />
               </div>
 
               <div className="pt-element">

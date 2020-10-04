@@ -52,7 +52,11 @@ const ManageProfile = ({
                 <h4 className="mp-company">
                   {profile.userProfile.status} at {profile.userProfile.company}
                 </h4>
-                <Social social={profile.userProfile.social} />
+                <Social
+                  social={
+                    profile.userProfile.social ? profile.userProfile.social : {}
+                  }
+                />
               </div>
 
               <div className="mp-bio">
