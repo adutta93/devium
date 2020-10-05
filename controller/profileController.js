@@ -13,7 +13,7 @@ exports.getCurrentUserProfile = async (req, res) => {
     }).populate("User", ["name", "avatar"]);
 
     if (!userProfile) {
-      return res.status(204).json({ msg: "Please create a profile!" });
+      return res.status(400).json({ msg: "Please create a profile!" });
     }
     res.status(200).json({
       total_exp: userProfile.experience.length,
