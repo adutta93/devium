@@ -63,7 +63,7 @@ const EditProfile = ({
       stackOverflow:
         loading || !profile.stackOverflow ? "" : profile.stackOverflow,
     });
-  }, [loading, getUserProfile, profile]);
+  }, [loading, getUserProfile]);
 
   const {
     company,
