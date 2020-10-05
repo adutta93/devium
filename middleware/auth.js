@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 require("dotenv").config();
+
 // Protect routes
 exports.protect = async (req, res, next) => {
   try {
@@ -11,13 +12,14 @@ exports.protect = async (req, res, next) => {
         .json({ Err: "Not token given, unable to authorize" });
     }
     const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+    console.log("Verified ===>", verified);
     if (!verified) {
       return res.status(401).json({
         err: "Token verification failed, access denied!",
       });
     }
     req.user = verified.user;
-    console.log(verified.id);
+    console.log("Verified id ==> ", req.user);
     next();
   } catch (error) {
     return res.status(500).json({ err: "Invalid Token" });

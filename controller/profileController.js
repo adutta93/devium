@@ -7,12 +7,13 @@ const { validationResult } = require("express-validator");
 //GET CURRENT USER PROFILE
 exports.getCurrentUserProfile = async (req, res) => {
   try {
+    console.log("User profile", req.user);
     const userProfile = await Profile.findOne({
       user: req.user.id,
     }).populate("User", ["name", "avatar"]);
 
     if (!userProfile) {
-      return res.status(400).json({ msg: "No profile found for this user" });
+      return res.status(204).json({ msg: "Please create a profile!" });
     }
     res.status(200).json({
       total_exp: userProfile.experience.length,

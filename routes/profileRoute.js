@@ -19,7 +19,7 @@ const {
 //@desc    Get current user pofile
 //@access  Protect
 router.get("/me", protect, getCurrentUserProfile);
-
+// router.get("/me", getCurrentUserProfile);
 //@route   POST api/profile/manage-profile
 //@desc    Creating and updating user profile
 //@access  Protect

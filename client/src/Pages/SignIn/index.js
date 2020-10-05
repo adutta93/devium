@@ -23,7 +23,7 @@ const SignIn = ({ login, isAuthenticated, user }) => {
         icon: "warning",
         position: "center",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 1500,
       });
     } else {
       login({ email, password });
