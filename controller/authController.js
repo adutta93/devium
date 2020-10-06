@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
     //if everything matches
     const payload = {
       user: {
-        id: user._id,
+        id: user.id,
         email: user.email,
       },
     };
