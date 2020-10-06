@@ -5,7 +5,7 @@ require("dotenv").config();
 // Protect routes
 exports.protect = async (req, res, next) => {
   try {
-    const token = req.header("Authorization");
+    const token = req.header("x-auth-token");
     if (!token) {
       return res
         .status(401)
